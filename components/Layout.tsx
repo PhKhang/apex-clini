@@ -1,10 +1,12 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Instagram, Facebook, Mail, MapPin } from 'lucide-react';
+import { Menu, X, Instagram, Facebook, ChevronDown } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -15,76 +17,179 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
+    setIsDropdownOpen(false);
   }, [location]);
 
-  const navLinks = [
+  const scrollToFooter = () => {
+    const footer = document.getElementById('footer');
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
+
+  const treatmentLinks = [
+    { name: 'Dermal Fillers', path: '/treatment/dermal-fillers' },
+    { name: 'Anti Wrinkles', path: '/treatment/anti-wrinkles' },
+    { name: 'Skincare', path: '/treatment/skincare' },
+    { name: 'Fat Dissolving', path: '/treatment/fat-dissolving' },
+  ];
+
+  const leftLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Treatments', path: '/treatments' },
-    { name: 'Reviews', path: '/reviews' },
+    { name: 'About', path: '/about' },
+  ];
+
+  const rightLinks = [
     { name: 'Pricing', path: '/pricing' },
     { name: 'Contact', path: '/contact' },
   ];
 
   return (
     <nav 
-      className={`fixed w-full z-50 transition-all duration-300 bg-white ${
-        scrolled ? 'shadow-sm py-4' : 'py-6'
+      className={`fixed w-full z-50 transition-all duration-500 bg-[#eeeae7] ${
+        scrolled ? 'py-4 shadow-sm' : 'py-8'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
-        <Link to="/" className="z-50 flex flex-col items-center group">
-          <h1 className="text-3xl md:text-4xl font-serif tracking-[0.05em] text-stone-900 leading-none">
-            APEX
-          </h1>
-          <span className="text-[10px] md:text-xs font-serif uppercase tracking-[0.6em] text-stone-900 leading-none mt-1.5 ml-1">
-            CLINIC
-          </span>
-        </Link>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8 items-center">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={`text-sm tracking-widest uppercase hover:text-stone-500 transition-colors ${
-                location.pathname === link.path ? 'text-stone-900 font-semibold border-b border-stone-900' : 'text-stone-600'
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
-
-        {/* Mobile Toggle */}
-        <button 
-          className="md:hidden z-50 text-stone-900"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-
-        {/* Mobile Menu Overlay */}
-        <div 
-          className={`fixed inset-0 bg-white flex flex-col justify-center items-center transition-opacity duration-300 ${
-            isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-          }`}
-        >
-          <div className="flex flex-col space-y-6 text-center">
-            {navLinks.map((link) => (
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex justify-between items-center relative">
+          
+          {/* Desktop Left Nav */}
+          <div className="hidden lg:flex space-x-12 items-center flex-1">
+            {leftLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-2xl font-serif text-stone-800 hover:text-stone-500 hover:italic transition-all"
+                className={`relative group text-[11px] tracking-[0.25em] uppercase transition-colors duration-300 ${
+                  location.pathname === link.path ? 'text-stone-900 font-bold' : 'text-stone-900/70 hover:text-stone-900'
+                }`}
               >
                 {link.name}
+                <span className={`absolute -bottom-1 left-0 h-[1.5px] bg-stone-900 transition-all duration-300 ease-out ${
+                  location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
               </Link>
             ))}
+
+            {/* Treatment Dropdown */}
+            <div 
+              className="relative group"
+              onMouseEnter={() => setIsDropdownOpen(true)}
+              onMouseLeave={() => setIsDropdownOpen(false)}
+            >
+              <button
+                className={`flex items-center space-x-2 text-[11px] tracking-[0.25em] uppercase transition-colors duration-300 ${
+                  location.pathname.startsWith('/treatment') ? 'text-stone-900 font-bold' : 'text-stone-900/70 hover:text-stone-900'
+                }`}
+              >
+                <span>Treatment</span>
+                <ChevronDown size={12} className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {/* Dropdown Menu */}
+              <div className={`absolute left-0 top-full pt-4 transition-all duration-300 ${isDropdownOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
+                <div className="bg-white shadow-xl py-4 min-w-[200px] border border-stone-100">
+                  {treatmentLinks.map((subLink) => (
+                    <Link
+                      key={subLink.name}
+                      to={subLink.path}
+                      className="block px-6 py-3 text-[10px] tracking-[0.2em] uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-all"
+                    >
+                      {subLink.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Training Link - Moved to Left */}
+            <Link
+              to="/training"
+              className={`relative group text-[11px] tracking-[0.25em] uppercase transition-colors duration-300 ${
+                location.pathname === '/training' ? 'text-stone-900 font-bold' : 'text-stone-900/70 hover:text-stone-900'
+              }`}
+            >
+              Training
+              <span className={`absolute -bottom-1 left-0 h-[1.5px] bg-stone-900 transition-all duration-300 ease-out ${
+                location.pathname === '/training' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
+            </Link>
+          </div>
+
+          {/* Centered Logo */}
+          <Link to="/" className="z-50 flex flex-col items-center lg:absolute lg:left-1/2 lg:-translate-x-1/2 group">
+            <h1 className="text-2xl md:text-3xl font-serif tracking-[0.1em] text-stone-900 leading-none">
+              APEX
+            </h1>
+            <span className="text-[8px] md:text-[10px] font-serif uppercase tracking-[0.8em] text-stone-900 leading-none mt-1 ml-1">
+              CLINIC
+            </span>
+          </Link>
+
+          {/* Desktop Right Nav */}
+          <div className="hidden lg:flex space-x-12 items-center flex-1 justify-end">
+            {rightLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`relative group text-[11px] tracking-[0.25em] uppercase transition-colors duration-300 ${
+                  location.pathname === link.path ? 'text-stone-900 font-bold' : 'text-stone-900/70 hover:text-stone-900'
+                }`}
+              >
+                {link.name}
+                <span className={`absolute -bottom-1 left-0 h-[1.5px] bg-stone-900 transition-all duration-300 ease-out ${
+                  location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
+              </Link>
+            ))}
+            <button 
+              onClick={scrollToFooter}
+              className="bg-stone-900 text-white px-7 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-stone-800 transition-all duration-300 ml-6"
+            >
+              Book Now
+            </button>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button 
+            className="lg:hidden z-50 text-stone-900"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        <div 
+          className={`fixed inset-0 bg-[#eeeae7] flex flex-col justify-center items-center transition-all duration-500 ease-in-out lg:hidden overflow-y-auto ${
+            isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-full pointer-events-none'
+          }`}
+        >
+          <div className="flex flex-col space-y-6 text-center items-center py-20">
+            {leftLinks.map((link) => (
+              <Link key={link.name} to={link.path} className="text-xl font-serif text-stone-800 uppercase tracking-widest">{link.name}</Link>
+            ))}
+            
+            <div className="flex flex-col space-y-4 items-center">
+              <span className="text-[10px] tracking-[0.3em] uppercase text-stone-400 font-bold">Treatments</span>
+              {treatmentLinks.map((link) => (
+                <Link key={link.name} to={link.path} className="text-lg font-serif text-stone-600 uppercase tracking-wider">{link.name}</Link>
+              ))}
+            </div>
+
+            <Link to="/training" className="text-xl font-serif text-stone-800 uppercase tracking-widest">Training</Link>
+
+            {rightLinks.map((link) => (
+              <Link key={link.name} to={link.path} className="text-xl font-serif text-stone-800 uppercase tracking-widest">{link.name}</Link>
+            ))}
+            <button 
+              onClick={scrollToFooter}
+              className="mt-4 bg-stone-900 text-white px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-stone-800 transition-all duration-300"
+            >
+              Book Now
+            </button>
           </div>
         </div>
       </div>
@@ -93,16 +198,21 @@ export const Navbar: React.FC = () => {
 };
 
 export const Footer: React.FC = () => {
+  const MarqueeItem = () => (
+    <div className="flex items-center text-stone-900/15 text-[6rem] md:text-[12rem] font-serif leading-none tracking-tighter uppercase select-none">
+      <span className="px-10 md:px-16">APEX CLINIC</span>
+      <div className="w-3 h-3 md:w-6 md:h-6 rounded-full bg-stone-900/10 flex-shrink-0"></div>
+    </div>
+  );
+
   return (
-    <footer className="bg-[#eeeae7] text-stone-900 py-24 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        
-        {/* Left Column - Contact Info */}
+    <footer id="footer" className="bg-[#eeeae7] text-stone-900 pt-[7.5rem] flex flex-col">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start pb-24">
         <div className="space-y-12">
            <div className="space-y-6">
              <p className="text-xs tracking-[0.2em] uppercase text-stone-500">Get in Touch</p>
              <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-none">
-              Contact <span className="font-script text-gold-400 text-6xl md:text-8xl ml-2">Us</span>
+              Contact <span className="font-script text-[#D9A13B] text-6xl md:text-8xl ml-2">Us</span>
              </h2>
              <p className="text-stone-600 font-light leading-relaxed max-w-md text-sm md:text-base">
                Have questions about a treatment or ready to book your consultation? Fill out the form below or reach out to us directly.
@@ -122,78 +232,55 @@ export const Footer: React.FC = () => {
                  <h3 className="text-sm font-bold uppercase tracking-widest text-stone-900 mb-2">Phone</h3>
                  <p className="text-stone-600 font-light">020 7123 4567</p>
               </div>
-              <div>
-                 <h3 className="text-sm font-bold uppercase tracking-widest text-stone-900 mb-2">Opening Hours</h3>
-                 <p className="text-stone-600 font-light">
-                   Mon - Fri: 10am - 7pm<br/>
-                   Sat: 10am - 4pm<br/>
-                   Sun: Closed
-                 </p>
-              </div>
            </div>
         </div>
 
-        {/* Right Column - Form */}
         <div>
-           {/* Updated to rounded-[10px] based on user request */}
            <div className="bg-white p-8 md:p-12 shadow-sm rounded-[10px]">
               <form className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-wider text-stone-400">First Name</label>
+                    <label className="text-xs uppercase tracking-wider text-stone-400 font-bold">First Name</label>
                     <input type="text" className="w-full bg-transparent border-b border-stone-300 focus:border-stone-900 outline-none py-2 transition-colors font-light text-stone-900" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-wider text-stone-400">Last Name</label>
+                    <label className="text-xs uppercase tracking-wider text-stone-400 font-bold">Last Name</label>
                     <input type="text" className="w-full bg-transparent border-b border-stone-300 focus:border-stone-900 outline-none py-2 transition-colors font-light text-stone-900" />
                   </div>
                 </div>
-
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-wider text-stone-400">Email Address</label>
-                  <input type="email" className="w-full bg-transparent border-b border-stone-300 focus:border-stone-900 outline-none py-2 transition-colors font-light text-stone-900" />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-wider text-stone-400">Interested In</label>
-                  <div className="relative">
-                    <select className="w-full bg-transparent border-b border-stone-300 focus:border-stone-900 outline-none py-2 transition-colors font-light text-stone-900 appearance-none rounded-none cursor-pointer">
-                      <option>General Enquiry</option>
-                      <option>Dermal Fillers</option>
-                      <option>Anti-Wrinkle</option>
-                      <option>Skin Rejuvenation</option>
-                    </select>
-                     <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-stone-400">
-                      <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-wider text-stone-400">Message</label>
+                  <label className="text-xs uppercase tracking-wider text-stone-400 font-bold">Message</label>
                   <textarea rows={4} className="w-full bg-transparent border-b border-stone-300 focus:border-stone-900 outline-none py-2 transition-colors font-light resize-none text-stone-900"></textarea>
                 </div>
-
                 <button 
                     type="button" 
-                    className="w-full bg-stone-900 text-white py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-stone-700 transition-colors rounded-none"
+                    className="w-full bg-stone-900 text-white py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-stone-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 rounded-none shadow-sm hover:shadow-md"
                 >
                     Send Message
                 </button>
               </form>
            </div>
         </div>
-
       </div>
       
-      {/* Copyright & Social */}
-      <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-stone-300 flex flex-col md:flex-row justify-between items-center text-xs tracking-wider text-stone-500 gap-4">
+      <div className="max-w-7xl mx-auto py-10 px-6 w-full border-t border-stone-200 flex flex-col md:flex-row justify-between items-center text-xs tracking-wider text-stone-500 gap-4">
         <p>© {new Date().getFullYear()} Apex Aesthetics Clinic. All rights reserved.</p>
         <div className="flex items-center gap-6">
            <a href="#" className="hover:text-stone-900 transition-colors"><Instagram size={16} /></a>
            <a href="#" className="hover:text-stone-900 transition-colors"><Facebook size={16} /></a>
+        </div>
+      </div>
+
+      {/* Decorative Scrolling Text Section */}
+      <div className="border-t border-white/60 bg-[#eeeae7] py-12 md:py-20 overflow-hidden relative">
+        <div className="flex whitespace-nowrap animate-marquee-right will-change-transform">
+          {/* Two identical sets of content for seamless looping */}
+          <div className="flex whitespace-nowrap">
+            {[...Array(6)].map((_, i) => <MarqueeItem key={`set1-${i}`} />)}
+          </div>
+          <div className="flex whitespace-nowrap">
+            {[...Array(6)].map((_, i) => <MarqueeItem key={`set2-${i}`} />)}
+          </div>
         </div>
       </div>
     </footer>
@@ -207,15 +294,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: React.FC<ButtonProps> = ({ children, variant = 'primary', to, className, ...props }) => {
-  // Styles updated: Wide padding (px-12), Sharp corners (rounded-none), Bold Uppercase text
-  const baseStyles = "inline-block px-12 py-4 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 ease-out rounded-none border border-stone-900";
-  
+  const baseStyles = "inline-block px-12 py-4 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 ease-out rounded-none border text-center transform hover:scale-[1.02] active:scale-[0.98]";
   const variants = {
-    // Primary: Black Background, White Text. Hover: White Background, Black Text.
-    primary: "bg-stone-900 text-white border-stone-900 hover:bg-white hover:text-stone-900",
-    
-    // Outline: Transparent Background, Black Text. Hover: Black Background, White Text.
-    outline: "bg-transparent text-stone-900 border-stone-900 hover:bg-stone-900 hover:text-white"
+    primary: "bg-stone-900 text-white border-stone-900 hover:bg-white hover:text-stone-900 hover:shadow-lg hover:border-stone-900",
+    outline: "bg-transparent text-stone-900 border-stone-900 hover:bg-stone-900 hover:text-white hover:shadow-md"
   };
 
   if (to) {

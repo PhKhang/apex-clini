@@ -3,8 +3,8 @@ import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar, Footer } from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
-import Treatments from './pages/Treatments';
-import Reviews from './pages/Reviews';
+import { DermalFillers, AntiWrinkles, Skincare, FatDissolving } from './pages/Treatments';
+import Training from './pages/Training';
 import Pricing from './pages/Pricing';
 import Contact from './pages/Contact';
 
@@ -29,8 +29,11 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/treatments" element={<Treatments />} />
-            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/treatment/dermal-fillers" element={<DermalFillers />} />
+            <Route path="/treatment/anti-wrinkles" element={<AntiWrinkles />} />
+            <Route path="/treatment/skincare" element={<Skincare />} />
+            <Route path="/treatment/fat-dissolving" element={<FatDissolving />} />
+            <Route path="/training" element={<Training />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

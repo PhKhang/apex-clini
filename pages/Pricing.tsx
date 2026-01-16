@@ -15,6 +15,7 @@ const PDF_MAX_WIDTH = 820;
 const Pricing: React.FC = () => {
   const [showPDF, setShowPDF] = useState(false);
   const [numPages, setNumPages] = useState<number | null>(null);
+  const [showAllPages, setShowAllPages] = useState(false);
   const [containerWidth, setContainerWidth] = useState<number>(0);
   const [pdfError, setPdfError] = useState<string | null>(null);
 
@@ -45,6 +46,17 @@ const Pricing: React.FC = () => {
 
     return () => {
       ro.disconnect();
+    };
+  }, [showPDF]);
+
+  // Prefetch PDF to warm the browser cache for faster first paint
+  useEffect(() => {
+    if (!showPDF) return;
+    let cancelled = false;
+    // quick, fire-and-forget fetch to warm browser cache
+    fetch('/images/pricelist.pdf', { method: 'GET', mode: 'cors' }).catch(() => {});
+    return () => {
+      cancelled = true;
     };
   }, [showPDF]);
 
@@ -127,24 +139,40 @@ const Pricing: React.FC = () => {
                 file="/images/pricelist.pdf"
                 onLoadSuccess={onDocumentLoadSuccess}
                 onLoadError={(e) => setPdfError(e?.message || String(e))}
-                loading={<div className="p-8 text-center">Loading PDF…</div>}
-                error={<div className="p-8 text-red-600">Error loading PDF: {pdfError}</div>}
+                loading={<div className="p-8 text-center">Loading Pricing…</div>}
+                error={<div className="p-8 text-red-600">Error loading pricing: {pdfError}</div>}
               >
                 {numPages && pdfWidth && (
-                  Array.from({ length: numPages }, (_, i) => (
-                    <div
-                      key={i}
-                      className="w-full flex justify-center py-6"
-                      style={{ touchAction: 'pan-y' }}
-                    >
+                  <>
+                    {/* Render first page immediately for a fast first paint */}
+                    <div className="w-full flex justify-center py-6" style={{ touchAction: 'pan-y' }}>
                       <Page
-                        pageNumber={i + 1}
+                        pageNumber={1}
                         width={pdfWidth}
                         renderTextLayer={false}
                         renderAnnotationLayer={false}
+                        onRenderSuccess={() => {
+                          // after first page finishes rendering, reveal the rest
+                          // small delay helps avoid layout jank
+                          setTimeout(() => setShowAllPages(true), 120);
+                        }}
                       />
                     </div>
-                  ))
+
+                    {/* Render remaining pages only after first page has painted */}
+                    {showAllPages && numPages > 1 && (
+                      Array.from({ length: numPages - 1 }, (_, idx) => (
+                        <div key={idx + 1} className="w-full flex justify-center py-6" style={{ touchAction: 'pan-y' }}>
+                          <Page
+                            pageNumber={idx + 2}
+                            width={pdfWidth}
+                            renderTextLayer={false}
+                            renderAnnotationLayer={false}
+                          />
+                        </div>
+                      ))
+                    )}
+                  </>
                 )}
               </Document>
 

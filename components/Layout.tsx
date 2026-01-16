@@ -47,7 +47,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav 
-      className={`fixed w-full z-50 transition-all duration-500 bg-[#f1ebe5] ${
+      className={`fixed w-full z-50 transition-all duration-500 bg-[#fdfcfb] ${
         scrolled ? 'py-4 shadow-sm' : 'py-8'
       }`}
     >
@@ -150,7 +150,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu Overlay */}
         <div 
-          className={`fixed inset-0 bg-[#f1ebe5] flex flex-col justify-center items-center transition-all duration-500 ease-in-out lg:hidden overflow-y-auto ${
+          className={`fixed inset-0 bg-[#fdfcfb] flex flex-col justify-center items-center transition-all duration-500 ease-in-out lg:hidden overflow-y-auto ${
             isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-full pointer-events-none'
           }`}
         >

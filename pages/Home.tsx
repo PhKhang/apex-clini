@@ -25,7 +25,7 @@ const Home: React.FC = () => {
       title: 'Dermal Fillers', 
       price: 'From £250',
       desc: 'Dermal Fillers are advanced injectable treatments used to restore lost volume, enhance facial contours, and improve facial balance.', 
-      img: 'https://scontent.fsgn2-8.fna.fbcdn.net/v/t51.82787-15/586681116_18442364185100116_8921318429838183563_n.jpg?stp=dst-jpegr_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeH1SFZqFMGPW_lVvOpZDIkIZ24AK2YDw8URnYArZgPDxRHefPzO-1kK6ZTYYx08vKb-QT9jZzpWODAW44SfXSoR9&_nc_ohc=N7vnOUGJRtkQ7kNvwFdf3sB&_nc_oc=AdkhjfOAHuyB4Pmdh8Dh5apZdEe1HS3M-ejFS7nYQKc2PyrAAO6T69ZPe5oUrERuQ9tBmNyXDfXjyqvwQMWt5kea&_nc_zt=23&se=-1&_nc_ht=scontent.fsgn2-8.fna&_nc_gid=06khaionDR6MwKVGIGFQEg&oh=00_AfpponaZIepoCh41Zll3DakM4ZCVHP5zchHzNciPIyvWuA&oe=696401EF' 
+      img: 'https://scontent.fsgn5-3.fna.fbcdn.net/v/t51.82787-15/587292115_18445243417100116_6097227774350340459_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=7g3cVAvFNuIQ7kNvwFzUfbA&_nc_oc=Adnbqy9fQssvevLrrcSNf1udpkphtB-WwTRnEzpny1NYYtot3YmU7-ebbDSfY0TkcF8Y5dvVKEZ807kAW32KzB9v&_nc_zt=23&_nc_ht=scontent.fsgn5-3.fna&_nc_gid=PHSWjJuwwCAXAD6Az-NEyA&oh=00_Afpej21V2fut5cJBunSOGZV2jeusFOr8mBJt0A2WtpLqIQ&oe=69702918' 
     },
     { 
       title: 'Anti-Wrinkle', 
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
       title: 'Fat Dissolving', 
       price: 'From £150',
       desc: 'Fat dissolving injections are a non-surgical treatment designed to target small, localised pockets of fat beneath the skin. ', 
-      img: 'https://scontent.fsgn2-8.fna.fbcdn.net/v/t51.75761-15/487774471_18402687823100116_517027302862515246_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF1l5LMV7e1jbnIQ40sLLI8Km4gfYDh_AoqbiB9gOH8ChdRmk1uGerigxoOVbaFLJXEGu9_wtX_qIGAJROWmfxA&_nc_ohc=srxfG1I4YVgQ7kNvwG-4Rs7&_nc_oc=AdlIJCCfXETOPJ67XslQQpB_6M0WZK707oz0SpEFb92gHp5u_MfrGy8Afe4GsGw0E5omDz6XY2fiXKbQEawYn1U7&_nc_zt=23&_nc_ht=scontent.fsgn2-8.fna&_nc_gid=FtfN-iC2tb92vg95yLRtyw&oh=00_AfqHbbP5WDFOi5-7TURamTNMNPTfGixTR6TUlpmVfgx3pg&oe=69642A4F' 
+      img: 'https://scontent.fsgn2-8.fna.fbcdn.net/v/t51.75761-15/487774471_18402687823100116_517027302862515246_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF1l5LMV7e1jbnIQ40sLLI8Km4gfYDh_AoqbiB9gOH8ChdRmk1uGerigxoOVbaFLJXEGu9_wtX_qIGAJROWmfxA&_nc_ohc=srxfG1I4YVgQ7kNvwG-4Rs7&_nc_oc=AdlIJCCfXETOPJ67XslQQpB_6M0WZK707oz0SpEFb92gHp5u_MfrGy8Afe4GsGw0E5omDz6XY2DAF19M5&_nc_zt=23&_nc_ht=scontent.fsgn2-8.fna&_nc_gid=FtfN-iC2tb92vg95yLRtyw&oh=00_AfqHbbP5WDFOi5-7TURamTNMNPTfGixTR6TUlpmVfgx3pg&oe=69642A4F' 
     },
     { 
       title: 'Ultimate Acne Buster', 
@@ -97,7 +97,7 @@ const Home: React.FC = () => {
       <section className="relative h-screen min-h-[600px] flex items-center bg-stone-50 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/616292719_1800651447315564_856920198089736045_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=G6ewOoCzikgQ7kNvwG0vFJ8&_nc_oc=AdmFivkqd18GD_oJE_HT8zzISzk11wjVOni_yyU4jwerYgZmSTwhn8mju61WP3OR9BhUSskYZ7hErrh-2rVqRF8Q&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=feNqTUEyf2I1HM1nuH65Iw&oh=00_Afr26U9mdufxKRJ340urbzs8svjp9_eDY3uGOmqOezSZkA&oe=696DCE71" 
+            src="https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/615402102_1802105790503463_1203018519109327570_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=6Y7NuUIWfeIQ7kNvwEqV_tV&_nc_oc=Adk4aVFL9ObHaM-hv8vs2uDSq6XM4u-xIbfOTvB09LZVuMYpVmkn-eAlvQRHNSi6NRXN4o0GG1OYp82zCSbd-1FZ&_nc_zt=23&_nc_ht=scontent.fsgn5-14.fna&_nc_gid=1yUVKu-lr87fRxgg0L3iIA&oh=00_Afp0B6PT6WJlkfcZGG6TW283WC3c2KiAuDypLgkmG8nBZA&oe=697043F5" 
             alt="Luxury Aesthetics Background"
             className="w-full h-full object-cover opacity-100 brightness-[1]"
           />
@@ -115,55 +115,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Empowering Confidence Section */}
-      <section className="pt-[7.5rem] md:pt-[15rem] pb-[3.75rem] md:pb-[7.5rem] bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div className="fade-in">
-            <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-[1.1] mb-2">
-              Apex Aesthetics <span className={`font-script text-6xl md:text-8xl inline-block ${scriptStyle}`}>by Liv</span>
-            </h2>
-            <div className="text-stone-600 font-light text-lg leading-relaxed mb-10 space-y-6">
-               <p>Trading as Apex Clinic, is a professional skin and aesthetics clinic based in Retford, Nottinghamshire. Led by an experienced nurse injector, we specialise in anti-wrinkle injections, dermal fillers, skin boosters, microneedling, polynucleotides, medical-grade facials and fat dissolving treatments.
-Every treatment is tailored to your individual features and goals, with a strong focus on safety, natural-looking results and expert aftercare.</p>
-            </div>
-            <div className="flex flex-col items-start space-y-6">
-              {['Dermal Fillers', 'Anti-Wrinkle', 'Skincare', 'Fat dissolving'].map((label, index) => (
-                <Link key={index} to="/pricing" className="border-b border-stone-900 pb-1 text-stone-900 hover:text-stone-600 hover:border-stone-500 font-serif text-lg tracking-wide transition-all">{label}</Link>
-              ))}
-            </div>
-          </div>
-          <div className="relative aspect-square bg-stone-50 rounded-[10px] overflow-hidden shadow-sm">
-              <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2070&auto=format&fit=crop" alt="Skincare Consultation" className="w-full h-full object-cover" />
-          </div>
-        </div>
-      </section>
-
-      {/* Meet Olivia (Founder) Section */}
-      <section className="py-[3.75rem] md:py-[7.5rem] bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-stretch">
-          <div className="order-2 md:order-1 relative">
-            <div className="h-full bg-stone-200 relative overflow-hidden rounded-[10px]">
-               <img src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t51.82787-15/553742065_18428179612100116_1721518372852238092_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHPyKkuriUljae4jVxe9KIPh5Md1K0Mf8SHkx3UrQx_xMOq6tnBgVvN1Jxx3O9FTzSwSE_SZCOOU9DVEiT0Jy_p&_nc_ohc=a3D-ElNau1YQ7kNvwEBXrG5&_nc_oc=Adkmy3cFG8QwxvepInSSxZEO7oG_j-HOa8jbVI69RQH517LREBdRkHVndvBcfY23WkpytWujYjdh8NwF5q7L8Ks3&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_gid=Wrga319Fp2zOAIwq7DQqpg&oh=00_Afo0AfplS0rQXxSLYYZrp6GlhdqsjAE9xB8gDvCqepaETg&oe=69642CB8" alt="Olivia Founder" className="w-full h-full object-cover" />
-            </div>
-          </div>
-          <div className="order-1 md:order-2 flex flex-col justify-center py-4">
-            <p className="text-xs tracking-[0.2em] uppercase text-stone-400 mb-4">The Expert</p>
-            <h2 className="text-4xl md:text-6xl font-serif mb-6 text-stone-900 leading-tight">
-              A message from <br className="md:hidden" /> our <span className={`font-script text-6xl md:text-8xl inline-block ${scriptStyle}`}>founder</span>
-            </h2>
-            <div className="space-y-6 text-stone-600 font-light leading-relaxed text-lg text-justify">
-              <p>Welcome to Apex Clinic, a space where natural-looking enhancements meet expert care. I'm Liv, an experienced nurse injector, dedicated to helping you feel confident and empowered in your own skin.</p>
-              <p>At Apex, we specialise in advanced aesthetic injectable treatments; including Anti Aging, Dermal Fillers, Skin Boosters, and Fat Dissolving, all tailored to your unique features and goals. Every treatment plan is personalized to enhance your natural beauty with subtle, refined results.</p>
-              <p>Our commitment doesn’t end after your appointment. We provide thorough, attentive aftercare to ensure your comfort and the best possible outcomes. From consultation to follow-up, you'll be supported every step of the way.</p>
-            </div>
-            <div className="mt-10">
-               <Button variant="primary" to="/about">Read Her Story</Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Services Section */}
+      {/* Our Services Section - Moved here after Hero */}
       <section className="py-[3.75rem] md:py-[7.5rem] bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
@@ -174,11 +126,6 @@ Every treatment is tailored to your individual features and goals, with a strong
                <p className="text-stone-600 font-light text-lg leading-relaxed">
                  Here at Apex Clinic we offer a range of treatments to help combat a wide variety of skin concerns.
                </p>
-            </div>
-            <div className="hidden md:block mb-1 flex-shrink-0 ml-8">
-               <Button variant="outline" to="/pricing" className="border-b-2 border-t-0 border-l-0 border-r-0 px-0 py-1 rounded-none hover:bg-transparent hover:text-stone-600 hover:border-stone-400 font-bold tracking-widest text-xs">
-                 VIEW ALL SERVICES
-               </Button>
             </div>
           </div>
 
@@ -207,6 +154,67 @@ Every treatment is tailored to your individual features and goals, with a strong
                   </div>
                ))}
              </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Empowering Confidence Section */}
+      <section className="pt-[3.75rem] md:pt-[7.5rem] pb-[3.75rem] md:pb-[7.5rem] bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-stretch">
+          {/* Image - items-stretch combined with h-full ensures frame matches text block height */}
+          <div className="relative h-full bg-stone-50 rounded-[10px] overflow-hidden shadow-sm min-h-[400px]">
+              <img 
+                src="https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/615886608_1802100287170680_6109332035050359730_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wreaEpm96W4Q7kNvwHIMliS&_nc_oc=AdnUgimrA93oFsWUGkffpgy8p79D7eMkIGPwL5wJk6jZybC3Nay7sLSPfVlpauTza3wGnOAsC8nR8TsP_ZK4F4mR&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=rX-Mxq2KpoN-5OaUURHpNA&oh=00_AfrMDjExcgbnE3B44MJAXMBDv-lo2MgRf0B9S859pP3FCw&oe=69704E42" 
+                alt="Apex Aesthetics by Liv" 
+                className="w-full h-full object-cover"
+              />
+          </div>
+          
+          <div className="fade-in flex flex-col justify-center py-4">
+            <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-[1.1] mb-2">
+              Apex Aesthetics <span className={`font-script text-6xl md:text-8xl inline-block ${scriptStyle}`}>by Liv</span>
+            </h2>
+            <div className="text-stone-600 font-light text-lg leading-relaxed mb-10 space-y-6">
+               <p>Trading as Apex Clinic, is a professional skin and aesthetics clinic based in Retford, Nottinghamshire. Led by an experienced nurse injector, we specialise in anti-wrinkle injections, dermal fillers, skin boosters, microneedling, polynucleotides, medical-grade facials and fat dissolving treatments.
+Every treatment is tailored to your individual features and goals, with a strong focus on safety, natural-looking results and expert aftercare.</p>
+            </div>
+            <div className="flex flex-col items-start space-y-6">
+              {['Dermal Fillers', 'Anti-Wrinkle', 'Skincare', 'Fat dissolving'].map((label, index) => (
+                <Link key={index} to="/pricing" className="border-b border-stone-900 pb-1 text-stone-900 hover:text-stone-600 hover:border-stone-500 font-serif text-lg tracking-wide transition-all">{label}</Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet Olivia (Founder) Section - Text Left, Image Right */}
+      <section className="py-[3.75rem] md:py-[7.5rem] bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-stretch">
+          {/* Text Container */}
+          <div className="order-1 md:order-1 flex flex-col justify-center py-4">
+            <p className="text-xs tracking-[0.2em] uppercase text-stone-400 mb-4">The Expert</p>
+            <h2 className="text-4xl md:text-6xl font-serif mb-6 text-stone-900 leading-tight">
+              A message from <br className="md:hidden" /> our <span className={`font-script text-6xl md:text-8xl inline-block ${scriptStyle}`}>founder</span>
+            </h2>
+            <div className="space-y-6 text-stone-600 font-light leading-relaxed text-lg text-justify">
+              <p>Welcome to Apex Clinic, a space where natural-looking enhancements meet expert care. I'm Liv, an experienced nurse injector, dedicated to helping you feel confident and empowered in your own skin.</p>
+              <p>At Apex, we specialise in advanced aesthetic injectable treatments; including Anti Aging, Dermal Fillers, Skin Boosters, and Fat Dissolving, all tailored to your unique features and goals. Every treatment plan is personalized to enhance your natural beauty with subtle, refined results.</p>
+              <p>Our commitment doesn’t end after your appointment. We provide thorough, attentive aftercare to ensure your comfort and the best possible outcomes. From consultation to follow-up, you'll be supported every step of the way.</p>
+            </div>
+            <div className="mt-10">
+               <Button variant="primary" to="/about">Read Her Story</Button>
+            </div>
+          </div>
+
+          {/* Image Container */}
+          <div className="order-2 md:order-2 relative min-h-[400px]">
+            <div className="h-full bg-stone-200 relative overflow-hidden rounded-[10px] shadow-sm">
+               <img 
+                 src="https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/615955281_1802100657170643_3506560264708239548_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=GiRAf2rbBQQQ7kNvwHPBSFm&_nc_oc=Adk2cuFr1ysivZy-3rKe8rDZa7lQTu2liAQWdrUD05QI8cl5RU45swzeg66SztE3pLNMbKk2bryfmhJVxdqZeU47&_nc_zt=23&_nc_ht=scontent.fsgn5-15.fna&_nc_gid=YME2oCYmqradR4F0ir165g&oh=00_AfrmZymsOPgJjrhSyDr0X9lIP7T2q6Tho8kIXj7USBQgdg&oe=69705A5A" 
+                 alt="Olivia Founder" 
+                 className="w-full h-full object-cover" 
+               />
+            </div>
           </div>
         </div>
       </section>

@@ -264,8 +264,8 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      <div className="border-t border-white/60 bg-[#eeeae7] py-12 md:py-20 overflow-hidden relative w-full">
-        <Marquee speed={50} gradient={false}>
+      <div className="border-t border-white/60 bg-[#eeeae7] py-12 md:py-20 relative w-full">
+        <Marquee speed={50} gradient={false} className='h-min overflow-hidden'>
           {[...Array(8)].map((_, i) => (
             <MarqueeItem key={i} thing="" />
           ))}

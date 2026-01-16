@@ -1,105 +1,144 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Apex Clinic | Luxury Aesthetics</title>
-    <meta name="description" content="Premium medical aesthetics tailored for you." />
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Prata (Serif), Lato (Sans), Mrs Saint Delafield (Script - Photograph style) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Mrs+Saint+Delafield&family=Prata&display=swap" rel="stylesheet">
 
-    <!-- Elfsight Google Reviews -->
-    <script src="https://elfsightcdn.com/platform.js" async></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apex Clinic | Luxury Aesthetics</title>
+  <meta name="description" content="Premium medical aesthetics tailored for you." />
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              serif: ['"Prata"', 'serif'],
-              sans: ['"Lato"', 'sans-serif'],
-              script: ['"Mrs Saint Delafield"', 'cursive'],
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Apex Clinic",
+    "image": "https://yourdomain.com/images/clinic.jpg",
+    "url": "https://yourdomain.com",
+    "telephone": "+84xxxxxxxx",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Nguyen Trai",
+      "addressLocality": "Ho Chi Minh City",
+      "addressRegion": "HCM",
+      "postalCode": "700000",
+      "addressCountry": "VN"
+    },
+    "openingHours": "Mo-Sa 09:00-19:00",
+    "sameAs": [
+      "https://www.facebook.com/apexclinic",
+      "https://www.instagram.com/apexclinic"
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Prata (Serif), Lato (Sans), Mrs Saint Delafield (Script - Photograph style) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Mrs+Saint+Delafield&family=Prata&display=swap"
+    rel="stylesheet">
+
+  <!-- Elfsight Google Reviews -->
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Prata"', 'serif'],
+            sans: ['"Lato"', 'sans-serif'],
+            script: ['"Mrs Saint Delafield"', 'cursive'],
+          },
+          colors: {
+            gold: {
+              400: '#d4af37',
+              500: '#c5a028',
             },
-            colors: {
-              gold: {
-                400: '#d4af37',
-                500: '#c5a028',
-              },
-              stone: {
-                50: '#dfdfd9',
-                100: '#d4d4ce', 
-                200: '#c8c8c2',
-                300: '#a8a8a2',
-                400: '#787872',
-                500: '#585852',
-                600: '#333333',
-                700: '#222222',
-                800: '#111111',
-                900: '#000000',
-              }
+            stone: {
+              50: '#dfdfd9',
+              100: '#d4d4ce',
+              200: '#c8c8c2',
+              300: '#a8a8a2',
+              400: '#787872',
+              500: '#585852',
+              600: '#333333',
+              700: '#222222',
+              800: '#111111',
+              900: '#000000',
+            }
+          },
+          animation: {
+            marquee: 'marquee 30s linear infinite',
+            'marquee-right': 'marquee-right 12s linear infinite',
+            scroll: 'scroll 30s linear infinite',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translate3d(0, 0, 0)' },
+              '100%': { transform: 'translate3d(-50%, 0, 0)' },
             },
-            animation: {
-              marquee: 'marquee 30s linear infinite',
-              'marquee-right': 'marquee-right 12s linear infinite',
-              scroll: 'scroll 30s linear infinite',
+            'marquee-right': {
+              '0%': { transform: 'translate3d(-50%, 0, 0)' },
+              '100%': { transform: 'translate3d(0, 0, 0)' },
             },
-            keyframes: {
-              marquee: {
-                '0%': { transform: 'translate3d(0, 0, 0)' },
-                '100%': { transform: 'translate3d(-50%, 0, 0)' },
-              },
-              'marquee-right': {
-                '0%': { transform: 'translate3d(-50%, 0, 0)' },
-                '100%': { transform: 'translate3d(0, 0, 0)' },
-              },
-              scroll: {
-                '0%': { transform: 'translateX(0)' },
-                '100%': { transform: 'translateX(calc(-100% / 2))' },
-              }
+            scroll: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(calc(-100% / 2))' },
             }
           }
         }
       }
-    </script>
-    <style>
-      body {
-        background-color: #dfdfd9; /* stone-50 */
-        color: #000000; /* stone-900 */
-      }
-      .fade-in {
-        animation: fadeIn 0.8s ease-in-out;
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      /* Custom utility for pausing marquee on hover */
-      .group:hover .group-hover\:pause {
-        animation-play-state: paused;
-      }
-      
-      /* Hide scrollbar for cleaner look */
-      .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-      }
-      .scrollbar-hide {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-      
-      /* Hide Elfsight branding only - not the widget content */
-      a[href*="elfsight.com"] {
-        display: none !important;
+    }
+  </script>
+  <style>
+    body {
+      background-color: #dfdfd9;
+      /* stone-50 */
+      color: #000000;
+      /* stone-900 */
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
       }
 
-    </style>
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Custom utility for pausing marquee on hover */
+    .group:hover .group-hover\:pause {
+      animation-play-state: paused;
+    }
+
+    /* Hide scrollbar for cleaner look */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Hide Elfsight branding only - not the widget content */
+    a[href*="elfsight.com"] {
+      display: none !important;
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -114,22 +153,24 @@
 }
 </script>
 </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-    
-    <!-- Remove only Elfsight branding link -->
-    <script>
-      function removeElfsightBranding() {
-        const widget = document.querySelector('.elfsight-app-92299baf-4b11-4be0-afde-b3349fdb3393');
-        if (widget) {
-          const links = widget.querySelectorAll('a[href*="elfsight.com"]');
-          links.forEach(link => link.remove());
-        }
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+
+  <!-- Remove only Elfsight branding link -->
+  <script>
+    function removeElfsightBranding() {
+      const widget = document.querySelector('.elfsight-app-92299baf-4b11-4be0-afde-b3349fdb3393');
+      if (widget) {
+        const links = widget.querySelectorAll('a[href*="elfsight.com"]');
+        links.forEach(link => link.remove());
       }
-      
-      setTimeout(removeElfsightBranding, 2000);
-      setTimeout(removeElfsightBranding, 4000);
-    </script>
-  </body>
+    }
+
+    setTimeout(removeElfsightBranding, 2000);
+    setTimeout(removeElfsightBranding, 4000);
+  </script>
+</body>
+
 </html>

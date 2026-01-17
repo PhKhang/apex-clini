@@ -201,19 +201,18 @@ const TreatmentLayout: React.FC<TreatmentPageProps> = ({
             referrerPolicy='no-referrer'
             src={heroImage} 
             alt={title}
-            className="w-full h-full object-cover opacity-90 brightness-[0.65]"
+            className="w-full h-full object-cover"
             style={{ transform: `translateY(${scrollY * 0.5}px)` }}
           />
-          <div className="absolute inset-0 bg-stone-900/30"></div>
         </div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto fade-in w-full flex flex-col items-center">
-          <h1 className="text-5xl md:text-8xl font-serif text-white leading-tight mb-8">
+          <h1 className="text-5xl md:text-8xl font-serif text-stone-900 leading-tight mb-8">
             {title} <br />
             {script && <span className={`font-script text-6xl md:text-9xl block -mt-4 ${scriptStyle}`}>{script}</span>}
           </h1>
           <div className="max-w-2xl mx-auto">
-             <div className="text-white/90 font-light text-lg leading-relaxed tracking-wide space-y-6">
+             <div className="text-stone-900 font-light text-lg leading-relaxed tracking-wide space-y-6">
                {heroDescription.split('\n\n').map((para, i) => (
                  <p key={i} className="mb-4 last:mb-0">{para}</p>
                ))}
@@ -645,7 +644,7 @@ Every treatment is carefully selected and tailored to your skin, helping to impr
       </>
     )}
     introImage="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=2070&auto=format&fit=crop"
-    introText="Our skin rejuvenation treatments work from the inside out to support healthier, stronger skin. These advanced therapies help stimulate collagen and elastin, improve hydration, and calm inflammation - resulting in smoother, firmer, more radiant skin over time.\n\nWhether you’re looking to maintain a healthy glow, address early signs of aging, or improve specific skin concerns, we’ll guide you towards the most suitable treatment for your skin and your goals."
+    introText="Our skin rejuvenation treatments work from the inside out to support healthier, stronger skin. These advanced therapies help stimulate collagen and elastin, improve hydration, and calm inflammation - resulting in smoother, firmer, more radiant skin over time.\n\nWhether you’re looking to maintain a healthy glow, address early skin concerns, or improve specific skin health, we’ll guide you towards the most suitable treatment for your skin and your goals."
     accordionSectionTitle={(
       <>
         Advanced <br /> 

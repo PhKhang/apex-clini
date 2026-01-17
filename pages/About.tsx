@@ -19,7 +19,7 @@ const About: React.FC = () => {
     const img = new window.Image();
     img.src = '/about/about.webp';
     img.onload = () => {
-      setHeroSize({ w: img.naturalWidth, h: img.naturalHeight });
+      // setHeroSize({ w: img.naturalWidth, h: img.naturalHeight });
     };
   }, []);
 
@@ -79,8 +79,8 @@ const About: React.FC = () => {
               referrerPolicy="no-referrer"
               src="/about/about.webp"
               alt="About Apex Clinic"
-              className="max-w-none block"
-              style={{ width: 'auto', height: 'auto', maxWidth: 'none' }}
+              className="max-w-none block w-full"
+              // style={{ width: 'auto', height: 'auto', maxWidth: 'none' }}
             />
           )}
         </div>

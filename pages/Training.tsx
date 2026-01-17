@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '../components/Layout';
+import Seo from '../components/Seo';
 
 const Training: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -64,6 +65,11 @@ const Training: React.FC = () => {
 
   return (
     <div className="w-full overflow-hidden">
+      <Seo
+        title="Training Academy | Aesthetics Courses at Apex Clinic"
+        description="Apex Clinic training academy in Retford offering beginner, refresher, advanced courses, and shadow days for aesthetics practitioners."
+        path="/training"
+      />
       
       {/* Hero Section for Training */}
       <section className="relative min-h-screen flex flex-col items-center bg-stone-50 overflow-hidden pt-[25vh] pb-32">

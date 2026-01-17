@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '../components/Layout';
 import { Document, Page, pdfjs } from 'react-pdf';
+import Seo from '../components/Seo';
 
 
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
@@ -80,6 +81,11 @@ const Pricing: React.FC = () => {
 
   return (
     <div className="pt-32 md:pt-48 pb-20 bg-white min-h-screen">
+      <Seo
+        title="Apex Clinic Pricing | Treatment Price List"
+        description="Transparent pricing for dermal fillers, anti-wrinkle, skincare, fat dissolving, and training at Apex Clinic in Retford."
+        path="/pricing"
+      />
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
@@ -138,7 +144,7 @@ const Pricing: React.FC = () => {
                 key="pdf-open" // FORCE REMOUNT (CRITICAL)
                 file="/images/pricelist.pdf"
                 onLoadSuccess={onDocumentLoadSuccess}
-                onLoadError={(e) => setPdfError(e?.message || String(e))}
+                onLoadError={(e) => setPdfError((e && (e as any).message) || String(e))}
                 loading={<div className="p-8 text-center">Loading Pricing…</div>}
                 error={<div className="p-8 text-red-600">Error loading pricing: {pdfError}</div>}
               >

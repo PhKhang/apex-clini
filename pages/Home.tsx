@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { ArrowRight, ArrowLeft, Star, Plus, Minus } from 'lucide-react';
 import { Button } from '../components/Layout';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const Home: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -101,6 +102,11 @@ const Home: React.FC = () => {
 
   return (
     <div className="w-full overflow-hidden">
+      <Seo
+        title="Apex Clinic & Training | Nurse-Led Aesthetics in Retford"
+        description="Nurse-led aesthetics clinic in Retford offering dermal fillers, anti-wrinkle, skincare, fat dissolving, and bespoke treatment plans."
+        path="/"
+      />
       
       {/* Hero Section */}
       <section className="relative h-screen min-h-[600px] flex items-center bg-stone-50 overflow-hidden">

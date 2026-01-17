@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Scale, Sparkles, Syringe, ShieldCheck } from 'lucide-react';
 import { Button } from '../components/Layout';
+import Seo from '../components/Seo';
 
 const About: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -30,6 +31,11 @@ const About: React.FC = () => {
 
   return (
     <div className="w-full overflow-hidden">
+      <Seo
+        title="About Apex Clinic | Nurse-Led Aesthetics in Retford"
+        description="Learn about Apex Clinic, a nurse-led aesthetics clinic in Retford offering safe, natural-looking treatments with medical integrity."
+        path="/about"
+      />
       
       {/* Hero Section */}
       <section className="relative h-screen min-h-[600px] flex items-end bg-stone-50 overflow-hidden pb-16 md:pb-24">

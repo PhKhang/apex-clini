@@ -1,6 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import { Button } from '../components/Layout';
+import Seo from '../components/Seo';
 import { 
   Smile, 
   Sparkles, 
@@ -11,11 +12,8 @@ import {
   Minus, 
   Activity, 
   ShieldCheck, 
-  Droplets, 
   Zap, 
   Target, 
-  TrendingDown,
-  Scissors,
   ArrowUpRight,
   Circle,
   MoveHorizontal
@@ -336,7 +334,7 @@ const TreatmentLayout: React.FC<TreatmentPageProps> = ({
                 <div>
                   <h3 className="text-2xl font-serif mb-8 text-stone-900 uppercase tracking-widest">Key Benefits</h3>
                   <div className="space-y-6">
-                    {benefits?.map((benefit, i) => (
+                    {benefits && benefits.map((benefit, i) => (
                       <div key={i} className="flex items-start space-x-4">
                         <div className="w-1 h-6 bg-[#D9A13B] mt-1"></div>
                         <p className="text-stone-600 font-light leading-relaxed">{benefit}</p>
@@ -347,7 +345,7 @@ const TreatmentLayout: React.FC<TreatmentPageProps> = ({
                 <div>
                   <h3 className="text-2xl font-serif mb-8 text-stone-900 uppercase tracking-widest">Available Treatments</h3>
                   <div className="grid grid-cols-1 gap-4">
-                    {items?.map((item, i) => (
+                    {items && items.map((item, i) => (
                       <div key={i} className="flex items-center space-x-3 border-b border-stone-200 pb-4">
                         <div className="w-2 h-2 bg-[#D9A13B] rounded-full"></div>
                         <span className="text-stone-800 font-serif text-lg">{item}</span>
@@ -468,92 +466,105 @@ const TreatmentLayout: React.FC<TreatmentPageProps> = ({
 };
 
 export const DermalFillers: React.FC = () => (
-  <TreatmentLayout 
-    title="Dermal"
-    script="Fillers"
-    heroImage="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2070&auto=format&fit=crop"
-    heroDescription={`Dermal Fillers are advanced injectable treatments used to restore lost volume and enhance facial contours. Using hyaluronic acid–based fillers, treatments are tailored to soften signs of ageing while maintaining natural expression.
+  <>
+    <Seo
+      title="Dermal Fillers | Apex Clinic"
+      description="Restore volume, enhance contours, and balance your profile with bespoke dermal filler treatments at Apex Clinic in Retford."
+      path="/treatment/dermal-fillers"
+    />
+    <TreatmentLayout 
+      title="Dermal"
+      script="Fillers"
+      heroImage="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2070&auto=format&fit=crop"
+      heroDescription={`Dermal Fillers are advanced injectable treatments used to restore lost volume and enhance facial contours. Using hyaluronic acid–based fillers, treatments are tailored to soften signs of ageing while maintaining natural expression.
 
 At Apex Aesthetics Clinic, every treatment is bespoke, designed to enhance your unique features while keeping you looking refreshed and balanced.`}
-    introTitle={(
-      <>
-        What <span className="font-script text-[#D9A13B] text-6xl md:text-8xl inline-block leading-none mx-2">Dermal Fillers</span> <br /> can do for you?
-      </>
-    )}
-    introText=""
-    comparisonBefore="https://images.unsplash.com/photo-1551184451-76b762941ad6?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    comparisonAfter="https://images.unsplash.com/photo-1580327748589-bdaf4fc6543e?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    comparisonBeforeText={{
-      title: "Before",
-      body: "As we age, the face naturally loses volume and structural support, causing features to soften and definition to fade."
-    }}
-    comparisonAfterText={{
-      title: "After",
-      body: "Dermal fillers help restore this lost volume and enhance facial structure, bringing balance, lift, and subtle definition back to the face."
-    }}
-    enhancementsTitle={(
-      <>
-        Tailored Enhancements <br /> <span className="font-script text-[#D9A13B] text-6xl md:text-9xl block -mt-4">for Every Face</span>
-      </>
-    )}
-    enhancementsIntro="Dermal filler treatments are suitable for both men and women and are always tailored to your facial structure and goals. Results can be soft and natural or more defined - never overdone. Treatments may help to:"
-    enhancementsColumns={3}
-    enhancements={[
-      {
-        title: "Smooth Lines",
-        body: "Soften fine lines and folds such as nose-to-mouth lines and smoker’s lines.",
-        icon: <Smile size={40} />
-      },
-      {
-        title: "Lift the Cheeks",
-        body: "Restore volume and gentle lift for a fresher, more youthful appearance.",
-        icon: <Sparkles size={40} />
-      },
-      {
-        title: "Define the Jawline",
-        body: "Enhance definition through the chin and jawline for improved structure and contour.",
-        icon: <Maximize size={40} />
-      },
-      {
-        title: "Refresh the Eyes",
-        body: "Improve the appearance of tired-looking under eyes by softening tears through hollows.",
-        icon: <Eye size={40} />
-      },
-      {
-        title: "Improve Facial Balance",
-        body: "Create better symmetry and harmony across the face with carefully placed enhancement.",
-        icon: <Scale size={40} />
-      }
-    ]}
-    accordionSectionTitle={(
-      <>
-        Advanced <br /> 
-        <span className="font-script text-[#D9A13B] text-6xl md:text-8xl block mt-2">Dermal Fillers</span>
-      </>
-    )}
-    accordionBgClass="bg-white"
-    accordionItems={[
-      {
-        title: "Lip Enhancement",
-        body: "Lip filler can subtly enhance the shape, balance, and hydration of the lips when done well. My approach is conservative and tailored, focusing on results that sit naturally with your features.\n\nWhether you’re looking to restore volume, improve symmetry, or add gentle definition, each treatment is planned around your face and your preferences. The aim is simple: lips that look soft, balanced, and still very much your own.",
-        image: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?q=80&w=2070&auto=format&fit=crop"
-      },
-      {
-        title: "Liquid Rhinoplasty",
-        body: "The nose plays a big role in how balanced our face looks, and for many people it’s an area they feel self-conscious about. Liquid rhinoplasty is a non-surgical treatment that uses dermal filler to subtly improve the shape of the nose, without surgery, scarring, or lengthy downtime.\nThis treatment is commonly used to soften a bump on the bridge, improve asymmetry, smooth small dips or indentations, and gently lift a drooping nasal tip. Rather than changing the nose completely, the aim is to create a smoother, more even profile that sits better with the rest of the face.\nResults are temporary but long-lasting. With careful placement, filler works by creating balance and proportion - often making imperfections far less noticeable and leaving the nose looking straighter and more refined.",
-        image: "https://images.unsplash.com/photo-1579159278991-88f572110c73?q=80&w=1935&auto=format&fit=crop"
-      },
-      {
-        title: "Facial Balancing Packages",
-        body: "Our facial balancing packages are our signature dermal filler treatments and are perfect for anyone looking for an overall enhancement rather than tweaking individual areas.\nInstead of treating one feature at a time, facial balancing looks at the face as a whole - focusing on structure, proportions, and harmony. By treating multiple areas together, we’re able to create results that feel natural, balanced, and still very you.\nThese packages also offer better value compared to booking individual treatments and are ideal if you’re wanting a refreshed, more defined look without anything looking overdone.\nFacial balancing is one of our most popular and in-demand treatments, chosen by clients who want subtle but noticeable results that enhance their natural features.\nEvery treatment starts with a detailed consultation, allowing us to create a personalised plan based on your face, your goals, and what will work best for you.",
-        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop"
-      }
-    ]}
-  />
+      introTitle={(
+        <>
+          What <span className="font-script text-[#D9A13B] text-6xl md:text-8xl inline-block leading-none mx-2">Dermal Fillers</span> <br /> can do for you?
+        </>
+      )}
+      introText=""
+      comparisonBefore="https://images.unsplash.com/photo-1551184451-76b762941ad6?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      comparisonAfter="https://images.unsplash.com/photo-1580327748589-bdaf4fc6543e?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      comparisonBeforeText={{
+        title: "Before",
+        body: "As we age, the face naturally loses volume and structural support, causing features to soften and definition to fade."
+      }}
+      comparisonAfterText={{
+        title: "After",
+        body: "Dermal fillers help restore this lost volume and enhance facial structure, bringing balance, lift, and subtle definition back to the face."
+      }}
+      enhancementsTitle={(
+        <>
+          Tailored Enhancements <br /> <span className="font-script text-[#D9A13B] text-6xl md:text-9xl block -mt-4">for Every Face</span>
+        </>
+      )}
+      enhancementsIntro="Dermal filler treatments are suitable for both men and women and are always tailored to your facial structure and goals. Results can be soft and natural or more defined - never overdone. Treatments may help to:"
+      enhancementsColumns={3}
+      enhancements={[
+        {
+          title: "Smooth Lines",
+          body: "Soften fine lines and folds such as nose-to-mouth lines and smoker’s lines.",
+          icon: <Smile size={40} />
+        },
+        {
+          title: "Lift the Cheeks",
+          body: "Restore volume and gentle lift for a fresher, more youthful appearance.",
+          icon: <Sparkles size={40} />
+        },
+        {
+          title: "Define the Jawline",
+          body: "Enhance definition through the chin and jawline for improved structure and contour.",
+          icon: <Maximize size={40} />
+        },
+        {
+          title: "Refresh the Eyes",
+          body: "Improve the appearance of tired-looking under eyes by softening tears through hollows.",
+          icon: <Eye size={40} />
+        },
+        {
+          title: "Improve Facial Balance",
+          body: "Create better symmetry and harmony across the face with carefully placed enhancement.",
+          icon: <Scale size={40} />
+        }
+      ]}
+      accordionSectionTitle={(
+        <>
+          Advanced <br /> 
+          <span className="font-script text-[#D9A13B] text-6xl md:text-8xl block mt-2">Dermal Fillers</span>
+        </>
+      )}
+      accordionBgClass="bg-white"
+      accordionItems={[
+        {
+          title: "Lip Enhancement",
+          body: "Lip filler can subtly enhance the shape, balance, and hydration of the lips when done well. My approach is conservative and tailored, focusing on results that sit naturally with your features.\n\nWhether you’re looking to restore volume, improve symmetry, or add gentle definition, each treatment is planned around your face and your preferences. The aim is simple: lips that look soft, balanced, and still very much your own.",
+          image: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?q=80&w=2070&auto=format&fit=crop"
+        },
+        {
+          title: "Liquid Rhinoplasty",
+          body: "The nose plays a big role in how balanced our face looks, and for many people it’s an area they feel self-conscious about. Liquid rhinoplasty is a non-surgical treatment that uses dermal filler to subtly improve the shape of the nose, without surgery, scarring, or lengthy downtime.\nThis treatment is commonly used to soften a bump on the bridge, improve asymmetry, smooth small dips or indentations, and gently lift a drooping nasal tip. Rather than changing the nose completely, the aim is to create a smoother, more even profile that sits better with the rest of the face.\nResults are temporary but long-lasting. With careful placement, filler works by creating balance and proportion - often making imperfections far less noticeable and leaving the nose looking straighter and more refined.",
+          image: "https://images.unsplash.com/photo-1579159278991-88f572110c73?q=80&w=1935&auto=format&fit=crop"
+        },
+        {
+          title: "Facial Balancing Packages",
+          body: "Our facial balancing packages are our signature dermal filler treatments and are perfect for anyone looking for an overall enhancement rather than tweaking individual areas.\nInstead of treating one feature at a time, facial balancing looks at the face as a whole - focusing on structure, proportions, and harmony. By treating multiple areas together, we’re able to create results that feel natural, balanced, and still very you.\nThese packages also offer better value compared to booking individual treatments and are ideal if you’re wanting a refreshed, more defined look without anything looking overdone.\nFacial balancing is one of our most popular and in-demand treatments, chosen by clients who want subtle but noticeable results that enhance their natural features.\nEvery treatment starts with a detailed consultation, allowing us to create a personalised plan based on your face, your goals, and what will work best for you.",
+          image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop"
+        }
+      ]}
+    />
+  </>
 );
 
 export const AntiWrinkles: React.FC = () => (
-  <TreatmentLayout 
+  <>
+    <Seo
+      title="Anti-Wrinkle Injections | Apex Clinic"
+      description="Soften fine lines and tension with natural-looking anti-wrinkle injections at Apex Clinic in Retford."
+      path="/treatment/anti-wrinkles"
+    />
+    <TreatmentLayout 
     title="Anti-Wrinkle"
     script="Injections"
     expectSectionReversed={true}
@@ -625,11 +636,18 @@ Treatment is quick and straightforward, usually taking 10–15 minutes, with no 
         icon: <Zap size={40} />
       }
     ]}
-  />
+    />
+  </>
 );
 
 export const Skincare: React.FC = () => (
-  <TreatmentLayout 
+  <>
+    <Seo
+      title="Skin Treatments | Apex Clinic"
+      description="Hydrate, repair, and rejuvenate your skin with advanced skincare treatments at Apex Clinic in Retford."
+      path="/treatment/skincare"
+    />
+    <TreatmentLayout 
     title="Skincare"
     script=""
     introSectionReversed={true}
@@ -681,11 +699,18 @@ Every treatment is carefully selected and tailored to your skin, helping to impr
         body: "Chemical peals use carefully selected acids to exfoliate and renew the skin, helping to improve pigmentation, acne, congestion, and uneven texture. Skin is left brighter, smoother, and more refined, with options tailored to your skin type and concerns."
       }
     ]}
-  />
+    />
+  </>
 );
 
 export const FatDissolving: React.FC = () => (
-  <TreatmentLayout 
+  <>
+    <Seo
+      title="Fat Dissolving Injections | Apex Clinic"
+      description="Non-surgical fat dissolving injections to refine chin, jawline, abdomen, and more at Apex Clinic in Retford."
+      path="/treatment/fat-dissolving"
+    />
+    <TreatmentLayout 
     title="Fat"
     script="Dissolving"
     introSectionReversed={false}
@@ -752,5 +777,6 @@ export const FatDissolving: React.FC = () => (
         image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2070&auto=format&fit=crop"
       }
     ]}
-  />
+    />
+  </>
 );

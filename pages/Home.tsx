@@ -266,20 +266,28 @@ Every treatment is tailored to your individual features and goals, with a strong
         </div>
       </section>
 
-      {/* Google Reviews Section - pb set to 0 to allow Footer padding to take over spacing */}
-      <section className="pt-[1.5rem] md:pt-[3rem] pb-16 md:pb-10 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-           <h2 className="text-5xl md:text-7xl font-serif text-stone-900 mb-2">
-            See what all the <br/>
-            <span className={`font-script text-6xl md:text-8xl inline-block ${scriptStyle}`}>talk is about!</span>
-           </h2>
-        </div>
+  {/* Google Reviews Section */}
+<section className="py-[7.5rem] bg-white overflow-hidden">
+  <div className="max-w-7xl mx-auto px-6 text-center">
+    <h2 className="text-5xl md:text-7xl font-serif text-stone-900 mb-2">
+      See what all the <br />
+      <span
+        className={`font-script text-6xl md:text-8xl inline-block ${scriptStyle}`}
+      >
+        talk is about!
+      </span>
+    </h2>
+  </div>
 
-        {/* Elfsight Google Reviews Widget */}
-        <div className="elfsight-wrapper pb-2" style={{ overflow: 'hidden' }}>
-          <div className="elfsight-app-92299baf-4b11-4be0-afde-b3349fdb3393" data-elfsight-app-lazy></div>
-        </div>
-      </section>
+  {/* Elfsight Google Reviews Widget */}
+  <div className="elfsight-wrapper" style={{ overflow: 'hidden' }}>
+    <div
+      className="elfsight-app-92299baf-4b11-4be0-afde-b3349fdb3393"
+      data-elfsight-app-lazy
+    ></div>
+  </div>
+</section>
+
     </div>
   );
 };

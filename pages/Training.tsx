@@ -91,16 +91,6 @@ const Training: React.FC = () => {
           <Button variant="primary" to="/contact" className="mb-32">
             Book Training Session
           </Button>
-
-          {/* 960x540 Frame */}
-          <div className="max-w-[960px] w-full aspect-video rounded-[10px] overflow-hidden shadow-2xl z-20 border-4 border-white/20">
-            <img 
-              referrerPolicy='no-referrer'
-              src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop" 
-              alt="Training Workshop" 
-              className="w-full h-full object-cover"
-            />
-          </div>
         </div>
       </section>
 
@@ -226,7 +216,7 @@ const Training: React.FC = () => {
             </div>
           </div>
           <div className="relative min-h-[450px]">
-            <div className="absolute inset-0 bg-stone-200 overflow-hidden rounded-[10px] shadow-2xl">
+            <div className="absolute inset-0 bg-stone-200 overflow-hidden rounded-[10px]">
                <img referrerPolicy='no-referrer' src="/training/why.webp" alt="Olivia Mentor" className="w-full h-full object-cover" />
             </div>
           </div>

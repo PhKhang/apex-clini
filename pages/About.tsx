@@ -55,7 +55,7 @@ const About: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <img
             referrerPolicy="no-referrer"
-            src="https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/616822034_1802463257134383_4470533189329416678_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=x3y_OQ_vDSoQ7kNvwHwxf66&_nc_oc=Adl0jrdODcUnDj_KakXloiP3kNZuFaDnAd1CocO_tBVEUEAKgWiqmLCcayoIQkKPDr8&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=s3CNdDTimd043tCyCv9VBA&oh=00_Afo8vHdNu7CtXJ1R9EeN5gMoBldRWtuISP1zvbMZBfs72w&oe=6970E9CC"
+            src="/about/about.webp"
             alt="About Apex Clinic"
             className="w-full h-full object-cover"
             style={{ transform: `translateY(${scrollY * 0.5}px)` }}
@@ -222,7 +222,6 @@ const About: React.FC = () => {
             alt="Clinic Interior"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#eeeae7]/90 backdrop-blur-[2px]"></div>
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">

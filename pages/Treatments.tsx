@@ -131,7 +131,10 @@ interface TreatmentPageProps {
   expectSectionReversed?: boolean;
   expectTitle?: string;
   expectScript?: string;
+  expectImage?: string;
   expectBody?: string;
+  expectImageClass?: string;
+  showExpect?: boolean;
 }
 
 const GoldIcon = ({ children }: { children?: React.ReactNode }) => (
@@ -179,7 +182,10 @@ const TreatmentLayout: React.FC<TreatmentPageProps> = ({
   expectSectionReversed = false,
   expectTitle = "What to",
   expectScript = "Expect",
-  expectBody
+  expectBody,
+  expectImage,
+  expectImageClass,
+  showExpect = true
 }) => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
   const [scrollY, setScrollY] = useState(0);
@@ -209,7 +215,7 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[700px] flex items-center justify-center bg-stone-50 overflow-hidden px-6">
+      <section className={`relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden px-6 ${heroImage ? '' : 'bg-stone-50'}`}>
         <div className="absolute inset-0 z-0">
           <img 
             referrerPolicy='no-referrer'
@@ -440,6 +446,7 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
 
 
       {/* Dynamic Expectation Section */}
+      {showExpect && (
       <section className="py-[7.5rem] md:py-[10rem] bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-stretch">
@@ -461,9 +468,9 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
             </div>
 
             {/* Right/Left depending on expectSectionReversed */}
-            <div className={`rounded-[10px] overflow-hidden shadow-2xl relative order-2 ${expectSectionReversed ? 'lg:order-1' : 'lg:order-2'} min-h-[400px]`}>
+            <div className={`rounded-[10px] overflow-hidden ${expectImageClass ? expectImageClass : 'shadow-2xl'} relative order-2 ${expectSectionReversed ? 'lg:order-1' : 'lg:order-2'} min-h-[400px]`}>
               <img 
-                src="/dermal-fillers/whattoexpect.webp" 
+                src={expectImage || "/dermal-fillers/whattoexpect.webp"} 
                 alt="Clinic Consultation" 
                 className="w-full h-full object-cover absolute inset-0"
               />
@@ -471,6 +478,7 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
           </div>
         </div>
       </section>
+      )}
 
     </div>
   );
@@ -486,7 +494,7 @@ export const DermalFillers: React.FC = () => (
     <TreatmentLayout 
       title="Dermal"
       script="Fillers"
-      heroImage="/public/dermal-fillers/hero.webp"
+      heroImage="/dermal-fillers/hero.webp"
       heroDescription={`Dermal Fillers are advanced injectable treatments used to restore lost volume and enhance facial contours. Using hyaluronic acid–based fillers, treatments are tailored to soften signs of ageing while maintaining natural expression.
 
 At Apex Aesthetics Clinic, every treatment is bespoke, designed to enhance your unique features while keeping you looking refreshed and balanced.`}
@@ -584,11 +592,13 @@ export const AntiWrinkles: React.FC = () => (
     expectBody={`My approach is always conservative and considered. Treatments are tailored to your facial structure, movement, and goals to achieve results that look natural and well-balanced.
 You’ll still look like yourself, just more refreshed, rested, and at ease.
 A review appointment is arranged around two weeks after treatment to ensure everything has settled beautifully and feels right for you.`}
-    heroImage="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2070&auto=format&fit=crop"
+    expectImage="/anti-wrinkles/anti-wrinkle2.webp"
+    expectImageClass=""
+    heroImage="/anti-wrinkles/treatment-hero-section.webp"
     heroDescription={`Do fine lines remain even when your face at rest? Or does facial tension leave you looking tired, tense, or less defined than you’d like? Anti-wrinkle injections offer a subtle way to soften lines, refine facial shape, and refresh your appearance , while keeping your expressions natural.
 
 At Apex Aesthetics Clinic, anti-wrinkle treatments are used to soften and balance, not freeze. The aim is never to change how you look, but to help you look more rested, relaxed, and like the best version of yourself.`}
-    introImage="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070&auto=format&fit=crop"
+    introImage="/anti-wrinkles/anti-wrinkles.webp"
     introTitle="How They"
     introScript="Work"
     introText={`Anti-wrinkle injections use a purified protein to gently relax targeted muscles responsible for repetitive facial movement. By reducing overactivity in these areas, fine lines are softened and the formation of deeper lines is slowed.
@@ -667,7 +677,8 @@ export const Skincare: React.FC = () => (
     title="Skincare"
     script=""
     introSectionReversed={true}
-    heroImage="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?q=80&w=2070&auto=format&fit=crop"
+    heroImage="/skincare/treatment-hero-section.webp"
+    showExpect={false}
     heroDescription={`Restore your skin’s natural glow with advanced, skin-focused treatments designed to hydrate, repair, and rejuvenate from within. At Apex Aesthetics Clinic, we offer results-driven therapies that go beyond surface-level skincare, focusing on long-term skin health, quality, and radiance.
 
 Every treatment is carefully selected and tailored to your skin, helping to improve texture, elasticity, and overall skin vitality while maintaining a natural, refreshed appearance.`}
@@ -677,7 +688,7 @@ Every treatment is carefully selected and tailored to your skin, helping to impr
         can do for you
       </>
     )}
-    introImage="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=2070&auto=format&fit=crop"
+    introImage="/skincare/intro.webp"
     introText="Our skin rejuvenation treatments work from the inside out to support healthier, stronger skin. These advanced therapies help stimulate collagen and elastin, improve hydration, and calm inflammation - resulting in smoother, firmer, more radiant skin over time.\n\nWhether you’re looking to maintain a healthy glow, address early skin concerns, or improve specific skin health, we’ll guide you towards the most suitable treatment for your skin and your goals."
     accordionSectionTitle={(
       <>
@@ -730,7 +741,7 @@ export const FatDissolving: React.FC = () => (
     title="Fat"
     script="Dissolving"
     introSectionReversed={false}
-    heroImage="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2020&auto=format&fit=crop"
+    heroImage="/fat-dissolving/hero.webp"
     heroDescription="We all have areas that feel resistant, no matter how healthy our lifestyle is. It’s completely normal… the body naturally stores fat in certain places, and some areas simply don’t respond to diet or exercise alone.\n\nFat dissolving injections offer a non-surgical way to gently refine and contour these stubborn areas. The treatment works gradually, helping to smooth and rebalance the area for a more defined appearance, without surgery or significant downtime."
     introTitle={(
       <>
@@ -739,7 +750,7 @@ export const FatDissolving: React.FC = () => (
       </>
     )}
     introScript=""
-    introImage="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2070&auto=format&fit=crop"
+    introImage="/fat-dissolving/what.webp"
     introBgClass="bg-[#eeeae7]"
     introText="Fat dissolving injections are a non-surgical treatment designed to target small, localised pockets of fat beneath the skin. The product works by breaking down fat cells, which are then naturally processed and removed by the body over time.\n\nResults develop gradually, making this an ideal option for subtle contouring in areas such as the chin and jawline, abdomen, thighs, or arms."
     enhancementsTitle={(
@@ -790,6 +801,11 @@ export const FatDissolving: React.FC = () => (
         body: "Address areas of skin rubbing or 'bingo wings' with targeted injections. These treatments help to firm up the silhouette by reducing the volume of fat in these challenging zones."
       }
     ]}
+    expectTitle="The"
+    expectScript="Results"
+    expectBody={`Changes appear gradually over the weeks following treatment as the body naturally clears the treated fat cells. The result is a smoother, more refined contour that looks natural and settles beautifully.
+  \n\nMost clients notice they simply feel more confident in themselves and that's always the goal.`}
+    expectImage="/fat-dissolving/the-result.webp"
     />
   </>
 );

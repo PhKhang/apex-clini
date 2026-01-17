@@ -165,31 +165,15 @@ const About: React.FC = () => {
             </div>
           </div>
           <div className="order-2 md:order-2 relative">
-            <div
-              className="h-[520px] bg-stone-200 relative overflow-hidden rounded-[10px]"
-              style={{ transform: "translateZ(0)" }}
-            >
+            <div className="h-full bg-stone-200 relative overflow-hidden rounded-[10px]">
               <img
                 src="/about/founder.webp"
                 alt="Olivia Founder"
-                className="
-        w-full
-        h-[108%]
-        object-cover
-        absolute
-        top-[-4%]
-        left-0
-        will-change-transform
-      "
-                style={{
-                  transform: `translateY(${Math.min(
-                    Math.max((scrollY - 1300) * 0.06, -20),
-                    20
-                  )}px)`,
-                }}
+                className="w-full h-[110%] object-cover absolute top-0 left-0"
               />
             </div>
           </div>
+
 
         </div>
       </section>

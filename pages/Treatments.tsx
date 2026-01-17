@@ -463,7 +463,7 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
             {/* Right/Left depending on expectSectionReversed */}
             <div className={`rounded-[10px] overflow-hidden shadow-2xl relative order-2 ${expectSectionReversed ? 'lg:order-1' : 'lg:order-2'} min-h-[400px]`}>
               <img 
-                src="/public/dermal-fillers/whattoexpect.webp" 
+                src="/dermal-fillers/whattoexpect.webp" 
                 alt="Clinic Consultation" 
                 className="w-full h-full object-cover absolute inset-0"
               />
@@ -496,8 +496,8 @@ At Apex Aesthetics Clinic, every treatment is bespoke, designed to enhance your 
         </>
       )}
       introText=""
-      comparisonBefore="/public/dermal-fillers/before.webp"
-      comparisonAfter="/public/dermal-fillers/after.webp"
+      comparisonBefore="/dermal-fillers/before.webp"
+      comparisonAfter="/dermal-fillers/after.webp"
       comparisonBeforeText={{
         title: "Before",
         body: "As we age, the face naturally loses volume and structural support, causing features to soften and definition to fade."
@@ -551,17 +551,17 @@ At Apex Aesthetics Clinic, every treatment is bespoke, designed to enhance your 
         {
           title: "Lip Enhancement",
           body: "Lip filler can subtly enhance the shape, balance, and hydration of the lips when done well. My approach is conservative and tailored, focusing on results that sit naturally with your features.\n\nWhether you’re looking to restore volume, improve symmetry, or add gentle definition, each treatment is planned around your face and your preferences. The aim is simple: lips that look soft, balanced, and still very much your own.",
-          image: "/public/dermal-fillers/lip.webp"
+          image: "/dermal-fillers/lip.webp"
         },
         {
           title: "Liquid Rhinoplasty",
           body: "The nose plays a big role in how balanced our face looks, and for many people it’s an area they feel self-conscious about. Liquid rhinoplasty is a non-surgical treatment that uses dermal filler to subtly improve the shape of the nose, without surgery, scarring, or lengthy downtime.\nThis treatment is commonly used to soften a bump on the bridge, improve asymmetry, smooth small dips or indentations, and gently lift a drooping nasal tip. Rather than changing the nose completely, the aim is to create a smoother, more even profile that sits better with the rest of the face.\nResults are temporary but long-lasting. With careful placement, filler works by creating balance and proportion - often making imperfections far less noticeable and leaving the nose looking straighter and more refined.",
-          image: "/public/dermal-fillers/liquid.webp"
+          image: "/dermal-fillers/liquid.webp"
         },
         {
           title: "Facial Balancing Packages",
           body: "Our facial balancing packages are our signature dermal filler treatments and are perfect for anyone looking for an overall enhancement rather than tweaking individual areas.\nInstead of treating one feature at a time, facial balancing looks at the face as a whole - focusing on structure, proportions, and harmony. By treating multiple areas together, we’re able to create results that feel natural, balanced, and still very you.\nThese packages also offer better value compared to booking individual treatments and are ideal if you’re wanting a refreshed, more defined look without anything looking overdone.\nFacial balancing is one of our most popular and in-demand treatments, chosen by clients who want subtle but noticeable results that enhance their natural features.\nEvery treatment starts with a detailed consultation, allowing us to create a personalised plan based on your face, your goals, and what will work best for you.",
-          image: "/public/dermal-fillers/facial.webp"
+          image: "/dermal-fillers/facial.webp"
         }
       ]}
     />

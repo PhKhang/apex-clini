@@ -169,7 +169,7 @@ export const Navbar: React.FC = () => {
           {/* Desktop Right Button */}
           <div className="hidden lg:block">
             <button
-              onClick={scrollToFooter}
+              onClick={() => window.open('https://that-time.co.uk/apex-aesthetics-by-liv', '_blank')}
               className="bg-stone-900 text-white px-7 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-stone-800 transition-all duration-300"
             >
               Book Now
@@ -228,7 +228,7 @@ export const Navbar: React.FC = () => {
             ))}
 
             <button
-              onClick={scrollToFooter}
+              onClick={() => window.open('https://that-time.co.uk/apex-aesthetics-by-liv', '_blank')}
               className="mt-4 bg-stone-900 text-white px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-stone-800 transition-all duration-300"
             >
               Book Now

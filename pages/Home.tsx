@@ -115,7 +115,10 @@ const Home: React.FC = () => {
             Nurse-Led <br className="hidden md:block" /> Aesthetics Clinic <br />
             <span className={`font-script text-6xl md:text-7xl block -mt-2 ${scriptStyle}`}>in Retford, Nottinghamshire</span>
           </h1>
-          <Button variant="primary" to="/contact">
+          <Button
+            variant="primary"
+            onClick={() => window.open('https://that-time.co.uk/apex-aesthetics-by-liv', '_blank')}
+          >
             Book Consultation
           </Button>
         </div>
@@ -154,7 +157,13 @@ const Home: React.FC = () => {
                      </div>
                      <p className="text-stone-600 font-light text-base leading-relaxed mb-8 italic flex-grow">{service.desc}</p>
                      <div className="mt-auto">
-                        <Button variant="outline" to="/contact" className="w-full py-3 text-[10px] tracking-[0.2em] bg-[#eeeae7]">Book Now</Button>
+                        <Button
+                          variant="outline"
+                          onClick={() => window.open('https://that-time.co.uk/apex-aesthetics-by-liv', '_blank')}
+                          className="w-full py-3 text-[10px] tracking-[0.2em] bg-[#eeeae7]"
+                        >
+                          Book Now
+                        </Button>
                      </div>
                   </div>
                ))}

@@ -88,7 +88,11 @@ const Training: React.FC = () => {
             Your career <br className="hidden md:block" /> 
             <span className={`font-script text-6xl md:text-8xl block -mt-2 ${scriptStyle}`}>starts with Apex</span>
           </h1>
-          <Button variant="primary" to="/contact" className="mb-32">
+          <Button
+            variant="primary"
+            onClick={() => window.open('https://that-time.co.uk/apex-aesthetics-by-liv', '_blank')}
+            className="mb-32"
+          >
             Book Training Session
           </Button>
         </div>
@@ -179,7 +183,13 @@ const Training: React.FC = () => {
                     )}
                   </div>
                   <div className="lg:col-span-3 flex flex-col lg:items-end justify-start h-full">
-                    <Button variant="outline" to="/contact" className="w-full lg:w-auto py-3 text-[10px] tracking-[0.2em] px-8">Enquire Now</Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => window.open('https://that-time.co.uk/apex-aesthetics-by-liv', '_blank')}
+                      className="w-full lg:w-auto py-3 text-[10px] tracking-[0.2em] px-8"
+                    >
+                      Enquire Now
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -245,7 +255,11 @@ const Training: React.FC = () => {
             <p>Complete the contact form below to get in touch, and we can discuss your background, aspirations, and the most suitable training pathway for you.</p>
             <p className="font-medium text-stone-800">Enquire today to take the next step in your aesthetics career.</p>
           </div>
-          <Button variant="primary" to="/contact" className="shadow-lg">
+          <Button
+            variant="primary"
+            onClick={() => window.open('https://that-time.co.uk/apex-aesthetics-by-liv', '_blank')}
+            className="shadow-lg"
+          >
             Enquire Now
           </Button>
         </div>

@@ -9,6 +9,7 @@ const Home: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [scrollY, setScrollY] = useState(0);
+  const [isAndroid, setIsAndroid] = useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +17,14 @@ const Home: React.FC = () => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  React.useEffect(() => {
+    try {
+      setIsAndroid(/Android/i.test(navigator.userAgent));
+    } catch (e) {
+      setIsAndroid(false);
+    }
   }, []);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -99,18 +108,27 @@ const Home: React.FC = () => {
       />
       
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[600px] flex items-center bg-stone-50 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+<section className="relative h-screen min-h-[600px] flex items-start md:items-center bg-stone-50 overflow-hidden">
+        {/* Desktop / md+ hero (hidden on small screens) */}
+        <div className="absolute inset-0 z-0 hidden md:block">
           <img 
             src="https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/615402102_1802105790503463_1203018519109327570_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=6Y7NuUIWfeIQ7kNvwEqV_tV&_nc_oc=Adk4aVFL9ObHaM-hv8vs2uDSq6XM4u-xIbfOTvB09LZVuMYpVmkn-eAlvQRHNSi6NRXN4o0GG1OYp82zCSbd-1FZ&_nc_zt=23&_nc_ht=scontent.fsgn5-14.fna&_nc_gid=1yUVKu-lr87fRxgg0L3iIA&oh=00_Afp0B6PT6WJlkfcZGG6TW283WC3c2KiAuDypLgkmG8nBZA&oe=697043F5" 
             alt="Luxury Aesthetics Background"
             className="w-full h-full object-cover opacity-100 brightness-[1]"
             style={{ transform: `translateY(${scrollY * 0.5}px)` }}
           />
-    
+        </div>
+
+        {/* Mobile-only hero (shows on small screens) */}
+        <div className="absolute inset-0 z-0 block md:hidden">
+          <img
+            src="/home/homepage-mobile-version.png"
+            alt="Luxury Aesthetics Mobile"
+            className="w-full h-full object-cover"
+          />
         </div>
         
-        <div className="relative z-10 text-left max-w-7xl mx-auto px-6 fade-in w-full">
+        <div className={`relative z-10 text-left max-w-7xl mx-auto px-6 fade-in w-full ${isAndroid ? 'pt-8' : ''}`}>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-black mb-8 leading-tight">
             Nurse-Led <br className="hidden md:block" /> Aesthetics Clinic <br />
             <span className={`font-script text-6xl md:text-7xl block -mt-2 ${scriptStyle}`}>in Retford, Nottinghamshire</span>

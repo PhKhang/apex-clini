@@ -95,7 +95,7 @@ const faqs = [
     a: "Appointments can be rescheduled once only, within the 72 hour notice period, with the booking fee transferred. Appointments must be cancelled at least 72 hours in advance. Late cancellations or no-shows will be charged in full and may result in future booking restrictions. Arrivals more than 15 minutes late may need to be rescheduled. Thank you for your cooperation and understanding."
   }
 ];
-  const scriptStyle = "text-[#D9A13B] py-2 leading-none font-['High_Summit',cursive]";
+  const scriptStyle = "text-[#D9A13B] py-2 leading-none";
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -133,7 +133,7 @@ const faqs = [
         <div className={`relative z-10 text-left max-w-7xl mx-auto px-6 fade-in w-full ${isAndroid ? 'pt-8' : 'pt-20'}`}>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-black mb-8 leading-tight text-center md:text-left">
             Nurse-Led <br className="hidden md:block" /> Aesthetics Clinic <br />
-            <span className={`text-5xl md:text-7xl block -mt-2 ${scriptStyle}`}>in Retford, Nottinghamshire</span>
+            <span className={`text-5xl md:text-7xl block -mt-2 ${scriptStyle} font-['High_Summit',cursive]`}>in Retford, Nottinghamshire</span>
           </h1>
           <div className="flex md:block">
             <Button
@@ -153,7 +153,7 @@ const faqs = [
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
             <div className="max-w-4xl">
               <h2 className="text-5xl md:text-7xl font-serif mb-4 text-stone-900">
-                Browse our <span className={`text-6xl md:text-8xl inline ${scriptStyle} ml-2`}>treatments</span>
+                Browse our <span className={`font-script text-6xl md:text-8xl inline ${scriptStyle} ml-2`}>treatments</span>
               </h2>
               <p className="text-stone-600 font-light text-lg leading-relaxed">
                 Here at Apex Clinic we offer a range of treatments to help combat a wide variety of skin concerns.
@@ -209,7 +209,7 @@ const faqs = [
 
           <div className="fade-in flex flex-col justify-center py-4">
             <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-[1.1] mb-2">
-              Apex Aesthetics <span className={`text-6xl md:text-8xl inline-block ${scriptStyle}`}>by Liv</span>
+              Apex Aesthetics <span className={`font-script text-6xl md:text-8xl inline-block ${scriptStyle}`}>by Liv</span>
             </h2>
             <div className="text-stone-600 font-light text-lg leading-relaxed mb-10 space-y-6">
               <p>Trading as Apex Clinic, is a professional skin and aesthetics clinic based in Retford, Nottinghamshire. Led by an experienced nurse injector, we specialise in anti-wrinkle injections, dermal fillers, skin boosters, microneedling, polynucleotides, medical-grade facials and fat dissolving treatments.
@@ -236,7 +236,7 @@ const faqs = [
           <div className="order-1 md:order-1 flex flex-col justify-center py-4">
             <p className="text-xs tracking-[0.2em] uppercase text-stone-400 mb-4">The Expert</p>
             <h2 className="text-4xl md:text-6xl font-serif mb-6 text-stone-900 leading-tight">
-              A message from <br className="md:hidden" /> our <span className={`text-6xl md:text-8xl inline-block ${scriptStyle}`}>founder</span>
+              A message from <br className="md:hidden" /> our <span className={`font-script text-6xl md:text-8xl inline-block ${scriptStyle}`}>founder</span>
             </h2>
             <div className="space-y-6 text-stone-600 font-light leading-relaxed text-lg text-justify">
               <p>Welcome to Apex Clinic, a space where natural-looking enhancements meet expert care. I'm Liv, an experienced nurse injector, dedicated to helping you feel confident and empowered in your own skin.</p>
@@ -267,7 +267,7 @@ const faqs = [
           <div className="text-center mb-16">
             <p className="text-xs tracking-[0.2em] uppercase text-stone-500 mb-4">Common Questions</p>
             <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-none">
-              Frequently Asked <span className={`text-6xl md:text-8xl inline-block ml-2 ${scriptStyle}`}>Questions</span>
+              Frequently Asked <span className={`font-script text-6xl md:text-8xl inline-block ml-2 ${scriptStyle}`}>Questions</span>
             </h2>
           </div>
 
@@ -303,7 +303,7 @@ const faqs = [
           <h2 className="text-5xl md:text-7xl font-serif text-stone-900 mb-2">
             See what all the <br />
             <span
-              className={`text-6xl md:text-8xl inline-block ${scriptStyle}`}
+              className={`font-script text-6xl md:text-8xl inline-block ${scriptStyle}`}
             >
               talk is about!
             </span>

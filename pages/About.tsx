@@ -101,7 +101,7 @@ const About: React.FC = () => {
               <h1 className={heroTitleClass}>
                 Apex Clinic <br className="hidden md:block" />
                 <span
-                  className={`font-script text-6xl md:text-8xl block -mt-2 text-white ${scriptStyle}`}
+                  className={`font-script text-6xl md:text-6xl block -mt-2 text-white ${scriptStyle}`}
                 >
                   Discover the Story of Apex
                 </span>

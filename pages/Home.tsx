@@ -131,9 +131,9 @@ const faqs = [
         </div>
         
         <div className={`relative z-10 text-left max-w-7xl mx-auto px-6 fade-in w-full ${isAndroid ? 'pt-8' : 'pt-20'}`}>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-black mb-8 leading-tight text-center md:text-left">
+          <h1 className="text-4xl md:text-7xl lg:text-8xl font-serif text-black mb-2 leading-tight text-center md:text-left">
             Nurse-Led <br className="hidden md:block" /> Aesthetics Clinic <br />
-            <span className={`text-5xl md:text-7xl block -mt-2 ${scriptStyle} font-['High_Summit',cursive]`}>in Retford, Nottinghamshire</span>
+            <span className={`text-4xl md:text-6xl block -mt-2 ${scriptStyle} font-['High_Summit',cursive]`}>in Retford, Nottinghamshire</span>
           </h1>
           <div className="flex md:block">
             <Button

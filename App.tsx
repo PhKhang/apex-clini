@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar, Footer } from './components/Layout';
 import Home from './pages/Home';
@@ -20,12 +20,22 @@ const ScrollToTop = () => {
 };
 
 const App: React.FC = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+      const handleScroll = () => {
+        setScrolled(window.scrollY > 50);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+  
   return (
     <BrowserRouter>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen font-sans text-stone-900 antialiased selection:bg-stone-200 selection:text-stone-900">
         <Navbar />
-        <main className="flex-grow">
+        <main className={`flex-grow ${scrolled ? 'py-4 shadow-sm' : 'py-8'}`}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

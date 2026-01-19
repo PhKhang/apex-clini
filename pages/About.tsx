@@ -97,7 +97,7 @@ const About: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 fade-in w-full">
           <div className="flex items-center justify-between">
-            <div className="text-left w-2/3 pr-12">
+            <div className="text-left w-full md:w-2/3 pr-12">
               <h1 className={heroTitleClass}>
                 Apex Clinic <br className="hidden md:block" />
                 <span

@@ -61,7 +61,8 @@ const About: React.FC = () => {
 
       {/* Hero Section */}
       <section className="relative h-screen min-h-[600px] flex items-end bg-stone-50 overflow-hidden pb-16 md:pb-24">
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
+        {/* Desktop / md+ hero (hidden on mobile) */}
+        <div className="absolute inset-0 z-0 hidden md:flex items-center justify-center">
           {heroSize ? (
             <img
               referrerPolicy="no-referrer"
@@ -80,9 +81,18 @@ const About: React.FC = () => {
               src="/about/about.webp"
               alt="About Apex Clinic"
               className="max-w-none block w-full"
-              // style={{ width: 'auto', height: 'auto', maxWidth: 'none' }}
             />
           )}
+        </div>
+
+        {/* Mobile-only hero (shows on small screens) */}
+        <div className="absolute inset-0 z-0 block md:hidden">
+          <img
+            referrerPolicy="no-referrer"
+            src="/about/hero-mobile.webp"
+            alt="About Apex Clinic Mobile"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 fade-in w-full">

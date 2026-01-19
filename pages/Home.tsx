@@ -54,21 +54,21 @@ const Home: React.FC = () => {
   ];
 
   const testimonials = [
-    { name: "Sarah J.", text: "Nurse Olivia is truly an artist. My results are so natural, nobody noticed I had anything done!", rating: 5, date: "2 weeks ago" },
-    { name: "Michael R.", text: "Highly professional clinic. The Deluxe Dermaplane left my skin glowing like never before.", rating: 5, date: "1 month ago" },
-    { name: "Emma L.", text: "The only place I trust for my anti-wrinkle treatments. Safe, clean, and amazing results.", rating: 5, date: "3 weeks ago" },
-    { name: "Jessica H.", text: "Found Olivia through a friend and I'm so glad I did. Her attention to detail is unmatched.", rating: 5, date: "5 days ago" },
-    { name: "David K.", text: "Exceptional service. The consultation was thorough and informative. 10/10.", rating: 5, date: "2 months ago" },
-    { name: "Sophie W.", text: "Best lip filler experience I've ever had. No pain and exactly the shape I wanted.", rating: 5, date: "1 week ago" },
-    { name: "Chloe T.", text: "The Ultimate Acne Buster treatment changed my skin. Forever grateful to Olivia!", rating: 5, date: "3 months ago" },
-    { name: "Rachel P.", text: "Cleanest clinic in Retford. Always feel comfortable and well cared for here.", rating: 5, date: "1 month ago" },
-    { name: "Lauren M.", text: "I've been to many injectors but Olivia's anatomical knowledge is superior.", rating: 5, date: "2 weeks ago" },
-    { name: "James B.", text: "Men's treatments are handled with great care here. Very subtle and refreshing.", rating: 5, date: "4 months ago" },
-    { name: "Natalie S.", text: "Her 'Turn Back The Years' package is a game changer. Worth every penny.", rating: 5, date: "2 months ago" },
-    { name: "Megan F.", text: "Always a 5-star experience at Apex. Olivia makes you feel like the only client.", rating: 5, date: "3 weeks ago" },
-    { name: "Olivia G.", text: "Incredible results and even better aftercare. Couldn't recommend more.", rating: 5, date: "1 month ago" },
-    { name: "Isabella V.", text: "The skin peel has done wonders for my pigmentation. Superb expertise!", rating: 5, date: "6 weeks ago" },
-    { name: "Hannah D.", text: "Found my forever clinic. Professional, kind, and brilliant results every time.", rating: 5, date: "2 weeks ago" },
+      { name: "Emily W", text: "The best there is! Such an amazing insightful person. Have loved everytime I have seen Liv. I have seen Liv 5 times (and counting) from my first ever experience with filler and I have had no complaints. She always puts me at ease and provides amazing and in depth knowledge which just puts you at ease. She is always so helpful and smiley, I will never go to anybody else. (Plus her playlists are always the best)!! Cannot reccommend her enough", rating: 5, date: "1 weeks ago", googleUrl: "https://maps.app.goo.gl/rCSBDwY41WkTTsHn7" },
+      { name: "Sophie Gray.", text: "I had a 3ml dermal filler package done by Liv, my results are incredible. They look really natural and I've been getting a lot of compliments saying how good my lips and jaw look. The salon is really clean and tidy, Liv is really professional, kind and explains the treatments she is doing before going ahead. Thank you so much Liv, I'll be back.", rating: 5, date: "1 month ago", googleUrl: "https://maps.app.goo.gl/hNFUn1pQwV3Npens8" },
+      { name: "Cas Smith", text: "Liv is just the most wonderful human being, she is so knowledgeable and informative but in such a friendly, lovely manner. Cannot fault her one bit. She is extremely professional, whilst also being absolutely hilarious! I would never go elsewhere now, she is just fantastic at what she does, and is always pushing herself to learn more and fine tune her expertise.", rating: 5, date: "3 weeks ago", googleUrl: "https://maps.app.goo.gl/jicLDmRsPdsvRUcFA" },
+      { name: "Lauren Graham", text: "I honestly couldn’t recommend Liv enough. From the moment I walked in, she made me feel completely at ease and comfortable, which is so important to me. She really takes the time to listen to what you want, explains everything clearly, and never makes you feel rushed or pressured. \n The results speak for themselves! Subtle, natural, and exactly what I was hoping for. I left feeling so confident and happy with how I look. You can tell she genuinely cares about her clients and takes so much pride in her work. \n If you’re looking for someone professional, talented, and kind who will make you look and feel amazing, she’s the one ✨.", rating: 5, date: "5 days ago", googleUrl: "https://maps.app.goo.gl/aM1C4tRuhUiTRUTp7" },
+      { name: "scott williams", text: "Had a great experience at Apex Aesthetics Clinic! Liv was absolutely lovely, so professional, friendly, and made me feel completely at ease. I’m beyond happy with my results and couldn’t recommend her enough. I’ll definitely be back!", rating: 5, date: "1 week ago", googleUrl: "https://maps.app.goo.gl/iBAMdRb3cnduCPNz9" },
+      { name: "Jamie-Lee  Laws-Freeman", text: "Could not recommend Apex Aesthetics enough! Liv makes me feel so at ease, no matter which treatment I have. Her knowledge is unmatched, you will never leave feeling unsure. I wouldn’t trust anyone else to do the job!! If you were thinking about it, take this as your sign to book!", rating: 5, date: "1 week ago", googleUrl: "https://maps.app.goo.gl/VtvDrZmPEQSwBez96" },
+      { name: "Katie Newton", text: " Highly recommend Liv! Always so polite and lovely. She makes you feel so at ease and reassures you when having treatments and after. No question is a silly question with her. Aims to deliver and she sure delivers! Xx", rating: 5, date: "1 week ago", googleUrl: "https://maps.app.goo.gl/f75SoTNot7g4UFL87" },
+      { name: "Eleanor", text: "Absolutely incredible service from Liv at Apex Clinic. Highly highly recommend her for all your needs. So knowledgeable and professional yet at the same time down to earth and friendly. I had the glass skin facial and results exceeded my expectations!", rating: 5, date: "1 week ago", googleUrl: "https://maps.app.goo.gl/c2mcpz5RVTUg5fFe7" },
+      { name: "Jodie Foster", text: "Liv is awesome at what she does. Shes honest and not afraid to tell you what will and wont look best. I trust her opinion completely and I'm over the moon with the work shes done.", rating: 5, date: "1 week ago", googleUrl: "https://maps.app.goo.gl/NAP3Be928ZHULWyL6" },
+      { name: "Katie", text: "I’ve had so many treatments done by Liv and she smashes it every time, I’ve never walked out from an appointment feeling anything other than amazed. She listens and advises, there is no one I’d feel more comfortable and trusted with. X", rating: 5, date: "1 week ago", googleUrl: "https://maps.app.goo.gl/fPinXFVkynR8YcY67" },
+      { name: "Jasmine Smithson", text: "Liv is absolutely amazing at what she does, love all the treatments I’ve had so far! Liv explains all the treatments and after care in detail, would 100% recommend coming here!", rating: 5, date: "1 week ago", googleUrl: "https://maps.app.goo.gl/BziAUt8iM1uieb2t8" },
+      { name: "Sara Conner", text: "Absolutely love Liv . She is so professional and would never recommend a treatment if she didn’t think you needed it . The clinic is lovely and calming . 5* plus", rating: 5, date: "1 week ago", googleUrl: "https://maps.app.goo.gl/9je527qzdhMkBEzu5 " },
+      { name: "poppy rockley", text: "I highly recommend Apex. Liv is amazing and really tailors each treatment to you, making you feel really comfortable and at ease!", rating: 5, date: "1 week ago", googleUrl: "https://maps.app.goo.gl/ka1Wj7EDKJcaapia7" },
+      { name: "Amanda Bott", text: "Amazing experience with liv. Extremely professional equally friendly. Would recommend 100%", rating: 5, date: "1 week ago", googleUrl: "https://maps.app.goo.gl/ZHdbBgom6jLxXWh86" },
+      { name: "Kelly", text: "My favourite place to come! Always feel so relaxed and taken care of well, this is where the magic happens 😍x …", rating: 5, date: "1 week ago", googleUrl: "https://maps.app.goo.gl/39Nr1o1BBGgRSB1z8" },
   ];
 
   const faqs = [
@@ -279,13 +279,44 @@ Every treatment is tailored to your individual features and goals, with a strong
     </h2>
   </div>
 
-  {/* Elfsight Google Reviews Widget */}
-  <div className="elfsight-wrapper" style={{ overflow: 'hidden' }}>
-    <div
-      className="elfsight-app-92299baf-4b11-4be0-afde-b3349fdb3393"
-      data-elfsight-app-lazy
-    ></div>
-  </div>
+   {/* Marquee Container */}
+        <div className="relative flex overflow-x-hidden group pb-10">
+          <div className="animate-marquee flex gap-8 py-4 whitespace-nowrap group-hover:pause">
+            {[...testimonials, ...testimonials].map((review, i) => (
+              <div key={i} className="inline-block w-[320px] bg-white rounded-[10px] shadow-sm border border-stone-100 p-8 hover:shadow-md transition-shadow">
+                <div className="flex items-center justify-between mb-4">
+                   <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-stone-100 flex items-center justify-center text-stone-400 font-serif overflow-hidden">
+                         <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${review.name}`} alt={review.name} className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                         <p className="text-sm font-bold text-stone-900">{review.name}</p>
+                         <p className="text-[10px] text-stone-400 uppercase tracking-wider">{review.date}</p>
+                      </div>
+                   </div>
+                   <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" className="w-4 h-4" />
+                </div>
+                <div className="flex text-amber-400 mb-3">
+                   {[...Array(review.rating)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}
+                </div>
+                <p className="text-stone-600 font-light text-base leading-relaxed italic whitespace-normal line-clamp-4">
+                   "{review.text}"
+                </p>
+                <div className="mt-6 pt-4 border-t border-stone-50 flex justify-end">
+                   <a
+                    href={review.googleUrl && review.googleUrl.length > 0 ? review.googleUrl : 'https://www.google.com/maps'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] font-bold uppercase tracking-widest text-stone-400 hover:text-stone-900 transition-colors"
+                    aria-label={review.googleUrl && review.googleUrl.length > 0 ? `View ${review.name}'s review on Google` : 'View Apex Clinic on Google Maps'}
+                   >
+                    View on Google
+                   </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 </section>
 
     </div>

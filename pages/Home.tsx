@@ -92,7 +92,7 @@ const faqs = [
   { q: "How many skin peel sessions will I need?", a: "While one peel provides a refresh, a course of 3 to 6 sessions is usually recommended for significant results with concerns like acne, pigmentation, or fine lines." },
   {
     q: "What is your cancellation policy?", 
-    a: "Appointments can be rescheduled once only, within the 72 hour notice period, with the booking fee transferred.\n\n Appointments must be cancelled at least 72 hours in advance. Late cancellations or no-shows will be charged in full and may result in future booking restrictions.\n\nArrivals more than 15 minutes late may need to be rescheduled.\n\nThank you for your cooperation and understanding."
+    a: "Appointments can be rescheduled once only, within the 72 hour notice period, with the booking fee transferred. Appointments must be cancelled at least 72 hours in advance. Late cancellations or no-shows will be charged in full and may result in future booking restrictions. Arrivals more than 15 minutes late may need to be rescheduled. Thank you for your cooperation and understanding."
   }
 ];
   const scriptStyle = "text-[#D9A13B] py-2 leading-none";

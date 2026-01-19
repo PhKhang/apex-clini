@@ -11,7 +11,7 @@
 @theme {
   --font-serif: "Prata", serif;
   --font-sans: "Lato", sans-serif;
-  --font-script: "Mrs Saint Delafield", cursive;
+  --font-script: 'High Summit', "Mrs Saint Delafield", cursive;
 
   --color-gold-400: #d4af37;
   --color-gold-500: #c5a028;

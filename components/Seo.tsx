@@ -10,7 +10,7 @@ interface SeoProps {
   canonical?: string; // optional absolute canonical override
 }
 
-const siteUrlFallback = 'https://apex-clini-kappa.vercel.app';
+const siteUrlFallback = 'https://apexaestheticsbyliv.co.uk';
 
 const Seo: React.FC<SeoProps> = ({ title, description, path, image, type = 'website', canonical }) => {
   const baseFromEnv = import.meta.env.VITE_SITE_URL as string | undefined;

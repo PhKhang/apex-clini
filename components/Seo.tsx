@@ -24,18 +24,23 @@ const Seo: React.FC<SeoProps> = ({ title, description, path, image, type = 'webs
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
-
+      
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="Apex Clinic" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
-      <meta property="og:image" content={imageUrl} />
-
+      {/* <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:width" content="500" />
+      <meta property="og:image:height" content="224" /> */}
+      
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
+      
+      {/* <meta name="robots" content="index, follow" />
+      <meta name="author" content="Apex Aesthetics by Liv" /> */}
     </Helmet>
   );
 };

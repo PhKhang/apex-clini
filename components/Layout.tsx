@@ -32,7 +32,7 @@ export const Navbar: React.FC = () => {
 
   const treatmentLinks = [
     { name: "Dermal Fillers", path: "/treatment/dermal-fillers" },
-    { name: "Anti Wrinkles", path: "/treatment/anti-wrinkles" },
+    { name: "Anti Wrinkle", path: "/treatment/anti-wrinkles" },
     { name: "Skincare", path: "/treatment/skincare" },
     { name: "Fat Dissolving", path: "/treatment/fat-dissolving" },
   ];

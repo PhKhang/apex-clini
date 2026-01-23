@@ -35,7 +35,7 @@ const App: React.FC = () => {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen font-sans text-stone-900 antialiased selection:bg-stone-200 selection:text-stone-900">
         <Navbar />
-        <main className={`flex-grow ${scrolled ? 'py-4 shadow-sm' : 'py-8'}`}>
+        <main className={`flex-grow ${scrolled ? 'pt-4 shadow-sm pb-0' : 'pt-8 pb-0'}`}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

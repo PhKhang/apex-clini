@@ -4,7 +4,7 @@ import Seo from '../components/Seo';
 
 const Contact: React.FC = () => {
   return (
-    <div className="pt-24 bg-stone-50">
+    <div className="bg-stone-50">
       <Seo
         title="Contact Apex Clinic | Book Your Consultation"
         description="Get in touch with Apex Clinic in Retford to book consultations for dermal fillers, anti-wrinkle treatments, skincare, and training."

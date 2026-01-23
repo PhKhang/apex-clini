@@ -114,7 +114,7 @@ const faqs = [
         {/* Desktop / md+ hero (hidden on small screens) */}
         <div className="absolute inset-0 z-0 hidden md:block">
           <img
-            src="https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/615402102_1802105790503463_1203018519109327570_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=6Y7NuUIWfeIQ7kNvwEqV_tV&_nc_oc=Adk4aVFL9ObHaM-hv8vs2uDSq6XM4u-xIbfOTvB09LZVuMYpVmkn-eAlvQRHNSi6NRXN4o0GG1OYp82zCSbd-1FZ&_nc_zt=23&_nc_ht=scontent.fsgn5-14.fna&_nc_gid=1yUVKu-lr87fRxgg0L3iIA&oh=00_Afp0B6PT6WJlkfcZGG6TW283WC3c2KiAuDypLgkmG8nBZA&oe=697043F5"
+            src="/home/hero.webp"
             alt="Luxury Aesthetics Background"
             className="w-full h-full object-cover opacity-100 brightness-[1]"
             style={{ transform: `translateY(${scrollY * 0.5}px)` }}
@@ -201,7 +201,7 @@ const faqs = [
           {/* Image - items-stretch combined with h-full ensures frame matches text block height */}
           <div className="relative h-full bg-stone-50 rounded-[10px] overflow-hidden shadow-sm min-h-[400px]">
             <img
-              src="https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/615886608_1802100287170680_6109332035050359730_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wreaEpm96W4Q7kNvwHIMliS&_nc_oc=AdnUgimrA93oFsWUGkffpgy8p79D7eMkIGPwL5wJk6jZybC3Nay7sLSPfVlpauTza3wGnOAsC8nR8TsP_ZK4F4mR&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=rX-Mxq2KpoN-5OaUURHpNA&oh=00_AfrMDjExcgbnE3B44MJAXMBDv-lo2MgRf0B9S859pP3FCw&oe=69704E42"
+              src="home/liv.webp"
               alt="Apex Aesthetics by Liv"
               className="w-full h-full object-cover"
             />
@@ -252,7 +252,7 @@ const faqs = [
           <div className="order-2 md:order-2 relative min-h-[400px]">
             <div className="h-full bg-stone-200 relative overflow-hidden rounded-[10px] shadow-sm">
               <img
-                src="https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/615955281_1802100657170643_3506560264708239548_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=GiRAf2rbBQQQ7kNvwHPBSFm&_nc_oc=Adk2cuFr1ysivZy-3rKe8rDZa7lQTu2liAQWdrUD05QI8cl5RU45swzeg66SztE3pLNMbKk2bryfmhJVxdqZeU47&_nc_zt=23&_nc_ht=scontent.fsgn5-15.fna&_nc_gid=YME2oCYmqradR4F0ir165g&oh=00_AfrmZymsOPgJjrhSyDr0X9lIP7T2q6Tho8kIXj7USBQgdg&oe=69705A5A"
+                src="home/expert.webp"
                 alt="Olivia Founder"
                 className="w-full h-full object-cover"
               />

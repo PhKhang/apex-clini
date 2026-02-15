@@ -90,7 +90,7 @@ const Training: React.FC = () => {
           </h1>
           <Button
             variant="primary"
-            onClick={() => window.open('https://that-time.co.uk/apex-aesthetics-by-liv', '_blank')}
+            onClick={() => window.open('https://api.whatsapp.com/send?phone=%2B447710537924', '_blank')}
             className="mb-32"
           >
             Book Training Session
@@ -185,7 +185,7 @@ const Training: React.FC = () => {
                   <div className="lg:col-span-3 flex flex-col lg:items-end justify-start h-full">
                     <Button
                       variant="outline"
-                      onClick={() => window.open('https://that-time.co.uk/apex-aesthetics-by-liv', '_blank')}
+                      onClick={() => window.open('https://api.whatsapp.com/send?phone=%2B447710537924', '_blank')}
                       className="w-full lg:w-auto py-3 text-[10px] tracking-[0.2em] px-8"
                     >
                       Enquire Now
@@ -257,7 +257,7 @@ const Training: React.FC = () => {
           </div>
           <Button
             variant="primary"
-            onClick={() => window.open('https://that-time.co.uk/apex-aesthetics-by-liv', '_blank')}
+            onClick={() => window.open('https://api.whatsapp.com/send?phone=%2B447710537924', '_blank')}
             className="shadow-lg"
           >
             Enquire Now

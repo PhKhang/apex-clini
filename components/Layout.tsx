@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Instagram, Facebook, ChevronDown } from "lucide-react";
+import { Menu, X, Instagram, Facebook, ChevronDown, MessageCircle } from "lucide-react";
 import Marquee from "react-fast-marquee";
 
 export const Navbar: React.FC = () => {
@@ -290,15 +290,26 @@ export const Footer: React.FC = () => {
               <h3 className="text-sm font-bold uppercase tracking-widest text-stone-900 mb-2">
                 Email
               </h3>
-              <p className="text-stone-600 font-light text-lg">
+              <a 
+                href="mailto:apexaestheticsbyliv@gmail.com"
+                className="text-stone-600 font-light text-lg hover:text-stone-900 transition-colors"
+              >
                 apexaestheticsbyliv@gmail.com
-              </p>
+              </a>
             </div>
             <div>
               <h3 className="text-sm font-bold uppercase tracking-widest text-stone-900 mb-2">
-                Phone
+                Phone / WhatsApp
               </h3>
-              <p className="text-stone-600 font-light text-lg">07710537924</p>
+              <a 
+                href="https://api.whatsapp.com/send?phone=%2B447710537924" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-stone-600 font-light text-lg hover:text-stone-900 transition-colors inline-flex items-center gap-2"
+              >
+                <MessageCircle size={18} />
+                07710537924
+              </a>
             </div>
           </div>
         </div>
@@ -353,11 +364,14 @@ export const Footer: React.FC = () => {
           reserved.
         </p>
         <div className="flex items-center gap-6">
-          <a href="#" className="hover:text-stone-900 transition-colors">
+          <a href="https://www.instagram.com/apexclinic.co/" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors">
             <Instagram size={16} />
           </a>
-          <a href="#" className="hover:text-stone-900 transition-colors">
+          <a href="https://www.facebook.com/profile.php?id=61551217751132" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors">
             <Facebook size={16} />
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=%2B447710537924" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors">
+            <MessageCircle size={16} />
           </a>
         </div>
       </div>

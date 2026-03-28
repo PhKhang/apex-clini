@@ -285,8 +285,11 @@ export const Footer: React.FC = () => {
                 Address
               </h3>
               <p className="text-stone-600 font-light text-lg">
-                Apex Clinic - based at AG PERMANENT COSMETICS ACADEMY
-                <br />6 Carolgate, Retford DN22 6BU
+                APEX CLINIC
+                <br />78A Carolgate
+                <br />Retford
+                <br />Nottinghamshire
+                <br />DN22 6EF
               </p>
             </div>
             <div>

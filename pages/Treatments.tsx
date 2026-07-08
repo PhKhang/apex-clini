@@ -2,18 +2,18 @@
 import React, { useState, useRef } from 'react';
 import { Button } from '../components/Layout';
 import Seo from '../components/Seo';
-import { 
-  Smile, 
-  Sparkles, 
-  Maximize, 
-  Eye, 
-  Scale, 
-  Plus, 
-  Minus, 
-  Activity, 
-  ShieldCheck, 
-  Zap, 
-  Target, 
+import {
+  Smile,
+  Sparkles,
+  Maximize,
+  Eye,
+  Scale,
+  Plus,
+  Minus,
+  Activity,
+  ShieldCheck,
+  Zap,
+  Target,
   ArrowUpRight,
   Circle,
   MoveHorizontal
@@ -39,36 +39,36 @@ const ComparisonSlider: React.FC<ComparisonSliderProps> = ({ beforeImage, afterI
   const onTouchMove = (e: React.TouchEvent) => handleMove(e.touches[0].clientX);
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="relative w-full aspect-[4/5] max-w-3xl mx-auto overflow-hidden rounded-[10px] shadow-2xl cursor-col-resize select-none"
       onMouseMove={onMouseMove}
       onTouchMove={onTouchMove}
     >
       {/* After Image (Background) */}
-      <img 
+      <img
         referrerPolicy='no-referrer'
-        src={afterImage} 
-        alt="" 
+        src={afterImage}
+        alt=""
         className="absolute inset-0 w-full h-full object-cover"
       />
 
       {/* Before Image (Clip) */}
-      <div 
+      <div
         className="absolute inset-0 w-full h-full overflow-hidden"
         style={{ width: `${sliderPosition}%` }}
       >
-        <img 
+        <img
           referrerPolicy='no-referrer'
-          src={beforeImage} 
-          alt="" 
+          src={beforeImage}
+          alt=""
           className="absolute inset-0 w-full h-full object-cover"
           style={{ width: `${100 / (sliderPosition / 100)}%`, maxWidth: 'none' }}
         />
       </div>
 
       {/* Slider Line & Handle */}
-      <div 
+      <div
         className="absolute top-0 bottom-0 w-1 bg-black group"
         style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
       >
@@ -116,6 +116,14 @@ interface TreatmentPageProps {
   useGoldIcons?: boolean;
   benefits?: string[];
   items?: string[];
+  benefitCardsTitle?: React.ReactNode;
+  benefitCardsScript?: string;
+  benefitCards?: { title: string; icon: React.ReactNode }[];
+  whyDifferentTitle?: React.ReactNode;
+  whyDifferentScript?: string;
+  whyDifferentBody?: string;
+  whyDifferentBullets?: string[];
+  whyDifferentFooter?: string;
   comparisonBefore?: string;
   comparisonAfter?: string;
   comparisonBeforeText?: { title: string; body: string };
@@ -128,6 +136,10 @@ interface TreatmentPageProps {
   introImage?: string;
   introBgClass?: string;
   introSectionReversed?: boolean;
+  introImageAspect?: string;
+  introSectionItemsClass?: string;
+  introCtaText?: string;
+  introCtaLink?: string;
   expectSectionReversed?: boolean;
   expectTitle?: string;
   expectScript?: string;
@@ -135,6 +147,11 @@ interface TreatmentPageProps {
   expectBody?: string;
   expectImageClass?: string;
   showExpect?: boolean;
+  missionTitle?: React.ReactNode;
+  missionScript?: string;
+  missionBody?: string;
+  missionImage?: string;
+  children?: React.ReactNode;
 }
 
 const GoldIcon = ({ children }: { children?: React.ReactNode }) => (
@@ -150,14 +167,61 @@ const GoldIcon = ({ children }: { children?: React.ReactNode }) => (
   </div>
 );
 
-const TreatmentLayout: React.FC<TreatmentPageProps> = ({ 
-  title, 
-  script, 
-  heroImage, 
-  heroDescription, 
+const renderBodyText = (text: string) => {
+  const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+  const blocks: { type: 'paragraph' | 'list'; items?: string[]; text?: string }[] = [];
+  let currentList: string[] = [];
+
+  lines.forEach(line => {
+    if (line.startsWith('•') || line.startsWith('*') || line.startsWith('-')) {
+      const bulletText = line.replace(/^[•*\-]\s*/, '');
+      currentList.push(bulletText);
+    } else {
+      if (currentList.length > 0) {
+        blocks.push({ type: 'list', items: currentList });
+        currentList = [];
+      }
+      blocks.push({ type: 'paragraph', text: line });
+    }
+  });
+
+  if (currentList.length > 0) {
+    blocks.push({ type: 'list', items: currentList });
+  }
+
+  return (
+    <>
+      {blocks.map((block, i) => {
+        if (block.type === 'list' && block.items) {
+          return (
+            <ul key={i} className="list-none space-y-2.5 my-6 pl-0">
+              {block.items.map((bullet, idx) => (
+                <li key={idx} className="text-stone-600 font-light text-lg leading-relaxed flex items-center gap-3">
+                  <span className="text-[#D9A13B] text-sm select-none">•</span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          );
+        }
+        return (
+          <p key={i} className="text-stone-600 font-light text-lg leading-relaxed">
+            {block.text}
+          </p>
+        );
+      })}
+    </>
+  );
+};
+
+const TreatmentLayout: React.FC<TreatmentPageProps> = ({
+  title,
+  script,
+  heroImage,
+  heroDescription,
   introTitle,
   introScript,
-  introText, 
+  introText,
   enhancementsTitle,
   enhancementsIntro,
   enhancements,
@@ -165,8 +229,16 @@ const TreatmentLayout: React.FC<TreatmentPageProps> = ({
   enhancementsBgClass = "bg-[#eeeae7]",
   enhancementItemClass = "border-white hover:bg-white/30",
   useGoldIcons = true,
-  benefits, 
+  benefits,
   items,
+  benefitCardsTitle,
+  benefitCardsScript,
+  benefitCards,
+  whyDifferentTitle,
+  whyDifferentScript,
+  whyDifferentBody,
+  whyDifferentBullets,
+  whyDifferentFooter,
   comparisonBefore,
   comparisonAfter,
   comparisonBeforeText,
@@ -179,13 +251,22 @@ const TreatmentLayout: React.FC<TreatmentPageProps> = ({
   introImage,
   introBgClass = "bg-white",
   introSectionReversed = false,
+  introImageAspect = "aspect-[4/5]",
+  introSectionItemsClass = "items-center",
+  introCtaText,
+  introCtaLink,
   expectSectionReversed = false,
   expectTitle = "What to",
   expectScript = "Expect",
   expectBody,
   expectImage,
   expectImageClass,
-  showExpect = true
+  showExpect = true,
+  missionTitle,
+  missionScript,
+  missionBody,
+  missionImage,
+  children
 }) => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
   const [scrollY, setScrollY] = useState(0);
@@ -217,38 +298,70 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
       {/* Hero Section */}
       <section className={`relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden px-6 ${heroImage ? '' : 'bg-stone-50'}`}>
         <div className="absolute inset-0 z-0">
-          <img 
+          <img
             referrerPolicy='no-referrer'
-            src={heroImage} 
+            src={heroImage}
             alt={title}
             className="w-full h-full object-cover"
             style={{ transform: `translateY(${scrollY * 0.5}px)` }}
           />
+          <div className="absolute inset-0 bg-[#dfdfd9]/60 backdrop-blur-[2px]"></div>
         </div>
-        
+
         <div className="relative z-10 text-center max-w-4xl mx-auto fade-in w-full flex flex-col items-center">
           <h1 className="text-5xl md:text-8xl font-serif text-stone-900 leading-tight mb-8">
             {title} <br />
             {script && <span className={`font-script text-6xl md:text-9xl block -mt-4 ${scriptStyle}`}>{script}</span>}
           </h1>
           <div className="max-w-2xl mx-auto">
-             <div className="text-stone-900 font-light text-lg leading-relaxed tracking-wide space-y-6">
+             <div className="text-stone-900 font-light text-lg leading-relaxed tracking-wide space-y-6 text-center">
                {normalizedHeroDescription.split('\n\n').map((para, i) => (
-                 <p key={i} className="mb-4 last:mb-0">{para}</p>
+                 <p key={i} className="mb-4 last:mb-0 text-center">{para}</p>
                ))}
              </div>
           </div>
         </div>
       </section>
 
+      {/* Our Mission Section */}
+      {missionBody && (
+        <section className="py-[7.5rem] md:py-[10rem] bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-stretch">
+              {/* Left Column: Text */}
+              <div className="text-left flex flex-col justify-center py-4">
+                <p className="text-xs tracking-[0.3em] uppercase text-stone-400 mb-6">Our Philosophy</p>
+                <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-tight mb-10">
+                  {missionTitle} <span className={`${scriptTitleClass} ml-4`}>{missionScript}</span>
+                </h2>
+                <div className="space-y-6 text-stone-600 font-light text-lg leading-relaxed">
+                  {missionBody.split('\n\n').map((para, i) => (
+                    <p key={i} className="mb-4 last:mb-0">{para}</p>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Column: Image */}
+              <div className="rounded-[10px] overflow-hidden shadow-2xl relative min-h-[400px]">
+                <img
+                  src={missionImage || "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=2070&auto=format&fit=crop"}
+                  alt="Our Mission"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Overlapping Image Section */}
       {overlappingImage && (
         <div className="relative z-30 -mt-[15vh] md:-mt-[20vh] px-6">
           <div className="max-w-6xl mx-auto aspect-video rounded-[10px] overflow-hidden shadow-2xl bg-stone-100">
-            <img 
+            <img
               referrerPolicy='no-referrer'
-              src={overlappingImage} 
-              alt="Treatment Showcase" 
+              src={overlappingImage}
+              alt="Treatment Showcase"
               className="w-full h-full object-cover"
             />
           </div>
@@ -259,7 +372,7 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
       <section className={`py-[7.5rem] md:py-[10rem] ${introBgClass} overflow-hidden ${overlappingImage ? 'pt-[10rem] md:pt-[15rem]' : ''}`}>
         <div className="max-w-7xl mx-auto px-6">
           {introImage ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 ${introSectionItemsClass}`}>
               <div className={`text-left order-1 ${introSectionReversed ? 'lg:order-2' : 'lg:order-1'}`}>
                 <p className="text-xs tracking-[0.3em] uppercase text-stone-400 mb-6">Specialised Care</p>
                 <h2 className={`${mainTitleClass} mb-10`}>
@@ -270,8 +383,15 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
                     <p key={i} className={bodyTextClass}>{para}</p>
                   ))}
                 </div>
+                {introCtaText && (
+                  <div className="mt-10">
+                    <Button to={introCtaLink || "/contact"} variant="primary">
+                      {introCtaText}
+                    </Button>
+                  </div>
+                )}
               </div>
-              <div className={`aspect-[4/5] rounded-[10px] overflow-hidden shadow-2xl order-2 ${introSectionReversed ? 'lg:order-1' : 'lg:order-2'}`}>
+              <div className={`${introImageAspect} rounded-[10px] overflow-hidden shadow-2xl order-2 ${introSectionReversed ? 'lg:order-1' : 'lg:order-2'}`}>
                 <img referrerPolicy='no-referrer' src={introImage} alt="Treatment Process" className="w-full h-full object-cover" />
               </div>
             </div>
@@ -283,9 +403,16 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
               </h2>
               {introText && (
                 <div className="max-w-2xl mx-auto mb-16">
-                  <p className={`${bodyTextClass}`}>
+                  <p className={`${bodyTextClass} mb-10`}>
                     {introText}
                   </p>
+                  {introCtaText && (
+                    <div className="flex justify-center">
+                      <Button to={introCtaLink || "/contact"} variant="primary">
+                        {introCtaText}
+                      </Button>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -296,10 +423,10 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
               {comparisonBeforeText && (
                 <div className="lg:col-span-3 text-left">
                   <h3 className="text-2xl font-serif text-stone-900 mb-4 uppercase tracking-widest">{comparisonBeforeText.title}</h3>
-                  <p className="text-stone-600 font-light leading-relaxed">{comparisonBeforeText.body}</p>
+                  <p className="text-stone-600 font-light text-lg leading-relaxed">{comparisonBeforeText.body}</p>
                 </div>
               )}
-              
+
               <div className={comparisonBeforeText ? 'lg:col-span-6' : 'max-w-2xl mx-auto'}>
                 <ComparisonSlider beforeImage={comparisonBefore} afterImage={comparisonAfter} />
               </div>
@@ -307,13 +434,117 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
               {comparisonAfterText && (
                 <div className="lg:col-span-3 text-right">
                   <h3 className="text-2xl font-serif text-stone-900 mb-4 uppercase tracking-widest">{comparisonAfterText.title}</h3>
-                  <p className="text-stone-600 font-light leading-relaxed">{comparisonAfterText.body}</p>
+                  <p className="text-stone-600 font-light text-lg leading-relaxed">{comparisonAfterText.body}</p>
                 </div>
               )}
             </div>
           )}
         </div>
       </section>
+
+      {/* Benefit Cards Grid Section */}
+      {benefitCards && (
+        <section className="py-[7.5rem] bg-[#eeeae7] overflow-hidden border-t border-stone-200">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center">
+              <h2 className={`${mainTitleClass} mb-16`}>
+                {benefitCardsTitle} {benefitCardsScript && <span className={`${scriptTitleClass} ml-2`}>{benefitCardsScript}</span>}
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 text-center">
+              {benefitCards.map((item, i) => (
+                <div
+                  key={i}
+                  className="bg-white/40 backdrop-blur-sm border border-white hover:bg-white/60 p-8 rounded-[10px] flex flex-col items-center text-center transition-all duration-300 shadow-sm"
+                >
+                  <GoldIcon>{item.icon}</GoldIcon>
+                  <h3 className="text-xl font-serif text-stone-900 leading-snug">{item.title}</h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Why Our Laser Is Different Section */}
+      {whyDifferentBody && (
+        <section className="py-[7.5rem] md:py-[11rem] bg-[#fdfdfc] overflow-hidden border-t border-stone-100 relative">
+          {/* Subtle abstract background graphic elements */}
+          <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-[#D9A13B]/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-stone-100 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
+
+          <div className="max-w-7xl mx-auto px-6">
+            {/* Elegant Header Area - Centered */}
+            <div className="text-center max-w-4xl mx-auto mb-16">
+              <span className="text-xs uppercase tracking-[0.25em] text-[#D9A13B] font-semibold mb-3 block">Technology Mastered</span>
+              <h2 className={`${mainTitleClass} mb-8`}>
+                {whyDifferentTitle} {whyDifferentScript && <span className={`${scriptTitleClass} block mt-2`}>{whyDifferentScript}</span>}
+              </h2>
+              <div className="text-stone-600 font-light text-lg leading-relaxed space-y-6 max-w-3xl mx-auto">
+                {whyDifferentBody.split('\n\n').map((para, i) => (
+                  <p key={i}>
+                    {para}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            {/* Bullet points - White squares with gold borders */}
+            {whyDifferentBullets && whyDifferentBullets.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-6xl mx-auto mb-20 justify-center">
+                {whyDifferentBullets.map((bullet, i) => (
+                  <div
+                    key={i}
+                    className="bg-white border border-[#D9A13B]/80 hover:border-[#D9A13B] rounded-xl p-6 flex flex-col justify-center items-center text-center shadow-sm hover:shadow-md transition-all duration-300 min-h-[140px] group"
+                  >
+                    <Sparkles className="text-[#D9A13B]/80 group-hover:text-[#D9A13B] mb-3 transition-colors" size={24} />
+                    <p className="text-stone-800 font-serif text-[1.05rem] leading-snug font-medium">{bullet}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Luxury Centered Footer Card */}
+            {whyDifferentFooter && (
+              <div className="max-w-4xl mx-auto">
+                <div className="bg-stone-950 border border-stone-900 p-8 md:p-12 rounded-2xl text-center relative overflow-hidden shadow-xl">
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-[#D9A13B]"></div>
+                  <Sparkles className="mx-auto text-[#D9A13B] opacity-80 mb-6" size={32} />
+                  <p className="text-stone-100 font-serif text-xl md:text-2xl italic leading-relaxed max-w-2xl mx-auto">
+                    "{whyDifferentFooter}"
+                  </p>
+                  <div className="mt-6 flex justify-center items-center gap-2">
+                    <div className="h-px w-8 bg-stone-800"></div>
+                    <span className="text-xs uppercase tracking-widest text-[#D9A13B] font-semibold">Apex Standard</span>
+                    <div className="h-px w-8 bg-stone-800"></div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Available Treatments Section */}
+      {items && !benefits && !accordionItems && (
+        <section className="py-[7.5rem] bg-white overflow-hidden">
+          <div className="max-w-3xl mx-auto px-6 text-center">
+            <h3 className="text-3xl font-serif mb-12 text-stone-900 uppercase tracking-widest">Available Treatments</h3>
+            <div className="grid grid-cols-1 gap-4 max-w-xl mx-auto text-left">
+              {items.map((item, i) => (
+                <div key={i} className="flex items-center space-x-3 border-b border-stone-200 pb-4">
+                  <div className="w-2 h-2 bg-[#D9A13B] rounded-full"></div>
+                  <span className="text-stone-800 font-serif text-lg">{item}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-12">
+              <Button variant="outline" to="/pricing">View Full Price List</Button>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Tailored Enhancements Grid (Treatment Areas) */}
       {(enhancements || (benefits && items)) && (
@@ -327,11 +558,11 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
                     {enhancementsIntro}
                   </p>
                 )}
-                
+
                 <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-left mt-20">
                   {enhancements.map((item, i) => (
-                    <div 
-                      key={i} 
+                    <div
+                      key={i}
                       className={`w-full md:w-[calc(50%-16px)] ${enhancementsColumns === 3 ? 'lg:w-[calc(33.333%-21.33px)]' : 'lg:w-[calc(25%-24px)]'} border ${enhancementItemClass} p-8 flex flex-col items-start transition-all`}
                     >
                       {useGoldIcons ? (
@@ -359,7 +590,7 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
                     {benefits && benefits.map((benefit, i) => (
                       <div key={i} className="flex items-start space-x-4">
                         <div className="w-1 h-6 bg-[#D9A13B] mt-1"></div>
-                        <p className="text-stone-600 font-light leading-relaxed">{benefit}</p>
+                        <p className="text-stone-600 font-light text-lg leading-relaxed">{benefit}</p>
                       </div>
                     ))}
                   </div>
@@ -394,7 +625,7 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
                 <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-tight mb-8">
                   {accordionSectionTitle || "Advanced Treatments"}
                 </h2>
-                <p className="text-stone-600 font-light text-xl leading-relaxed">
+                <p className="text-stone-600 font-light text-lg leading-relaxed">
                   {accordionSectionBody || "Bespoke clinical solutions designed to enhance your natural beauty with medical-grade precision."}
                 </p>
               </div>
@@ -403,7 +634,7 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
               <div className="lg:col-span-7">
                 {accordionItems.map((item, idx) => (
                   <div key={idx} className="border-t border-black last:border-b transition-all">
-                    <button 
+                    <button
                       onClick={() => setActiveAccordion(activeAccordion === idx ? null : idx)}
                       className="w-full py-12 md:py-16 group flex justify-between items-center text-left focus:outline-none"
                     >
@@ -417,16 +648,16 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
                         {activeAccordion === idx ? <Minus size={32} /> : <Plus size={32} />}
                       </div>
                     </button>
-                    <div 
+                    <div
                       className={`overflow-hidden transition-all duration-700 ease-in-out ${
                         activeAccordion === idx ? 'max-h-[2000px] opacity-100 pb-16 md:pb-24' : 'max-h-0 opacity-0 pointer-events-none'
                       }`}
                     >
                       <div className={`grid grid-cols-1 ${item.image ? 'md:grid-cols-2' : ''} gap-12 items-start`}>
                         <div className="space-y-8">
-                          {item.body.split('\n').map((line, i) => (
-                            <p key={i} className="text-stone-600 font-light text-lg leading-relaxed">{line}</p>
-                          ))}
+                          <div className="space-y-6">
+                            {renderBodyText(item.body)}
+                          </div>
                           <Button variant="primary" to="/contact" className="px-12 py-4 mt-6">Enquire About This</Button>
                         </div>
                         {item.image && (
@@ -444,6 +675,7 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
         </section>
       )}
 
+      {children}
 
       {/* Dynamic Expectation Section */}
       {showExpect && (
@@ -469,9 +701,9 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
 
             {/* Right/Left depending on expectSectionReversed */}
             <div className={`rounded-[10px] overflow-hidden ${expectImageClass ? expectImageClass : 'shadow-2xl'} relative order-2 ${expectSectionReversed ? 'lg:order-1' : 'lg:order-2'} min-h-[400px]`}>
-              <img 
-                src={expectImage || "/dermal-fillers/whattoexpect.webp"} 
-                alt="Clinic Consultation" 
+              <img
+                src={expectImage || "/dermal-fillers/whattoexpect.webp"}
+                alt="Clinic Consultation"
                 className="w-full h-full object-cover absolute inset-0"
               />
             </div>
@@ -491,7 +723,7 @@ export const DermalFillers: React.FC = () => (
       description="Restore volume, enhance contours, and balance your profile with bespoke dermal filler treatments at Apex Clinic in Retford."
       path="/treatment/dermal-fillers"
     />
-    <TreatmentLayout 
+    <TreatmentLayout
       title="Dermal"
       script="Fillers"
       heroImage="/dermal-fillers/hero.webp"
@@ -550,7 +782,7 @@ At Apex Aesthetics Clinic, every treatment is bespoke, designed to enhance your 
       ]}
       accordionSectionTitle={(
         <>
-          Advanced <br /> 
+          Advanced <br />
           <span className="font-script text-[#D9A13B] text-6xl md:text-8xl block mt-2">Dermal Fillers</span>
         </>
       )}
@@ -583,7 +815,7 @@ export const AntiWrinkles: React.FC = () => (
       description="Soften fine lines and tension with natural-looking anti-wrinkle injections at Apex Clinic in Retford."
       path="/treatment/anti-wrinkles"
     />
-    <TreatmentLayout 
+    <TreatmentLayout
     title="Anti-Wrinkle"
     script="Injections"
     expectSectionReversed={true}
@@ -673,7 +905,7 @@ export const Skincare: React.FC = () => (
       description="Hydrate, repair, and rejuvenate your skin with advanced skincare treatments at Apex Clinic in Retford."
       path="/treatment/skincare"
     />
-    <TreatmentLayout 
+    <TreatmentLayout
     title="Skincare"
     script=""
     introSectionReversed={true}
@@ -684,7 +916,7 @@ export const Skincare: React.FC = () => (
 Every treatment is carefully selected and tailored to your skin, helping to improve texture, elasticity, and overall skin vitality while maintaining a natural, refreshed appearance.`}
     introTitle={(
       <>
-        What <span className="font-script text-[#D9A13B] text-6xl md:text-8xl inline-block leading-none mx-2">Skin Rejuvenation</span> <br /> 
+        What <span className="font-script text-[#D9A13B] text-6xl md:text-8xl inline-block leading-none mx-2">Skin Rejuvenation</span> <br />
         can do for you
       </>
     )}
@@ -692,7 +924,7 @@ Every treatment is carefully selected and tailored to your skin, helping to impr
     introText="Our skin rejuvenation treatments work from the inside out to support healthier, stronger skin. These advanced therapies help stimulate collagen and elastin, improve hydration, and calm inflammation - resulting in smoother, firmer, more radiant skin over time.\n\nWhether you’re looking to maintain a healthy glow, address early skin concerns, or improve specific skin health, we’ll guide you towards the most suitable treatment for your skin and your goals."
     accordionSectionTitle={(
       <>
-        Advanced <br /> 
+        Advanced <br />
         <span className="font-script text-[#D9A13B] text-6xl md:text-8xl block mt-2">Dermal Science</span>
       </>
     )}
@@ -737,7 +969,7 @@ export const FatDissolving: React.FC = () => (
       description="Non-surgical fat dissolving injections to refine chin, jawline, abdomen, and more at Apex Clinic in Retford."
       path="/treatment/fat-dissolving"
     />
-    <TreatmentLayout 
+    <TreatmentLayout
     title="Fat"
     script="Dissolving"
     introSectionReversed={false}
@@ -746,7 +978,7 @@ export const FatDissolving: React.FC = () => (
     heroDescription="We all have areas that feel resistant, no matter how healthy our lifestyle is. It’s completely normal… the body naturally stores fat in certain places, and some areas simply don’t respond to diet or exercise alone.\n\nFat dissolving injections offer a non-surgical way to gently refine and contour these stubborn areas. The treatment works gradually, helping to smooth and rebalance the area for a more defined appearance, without surgery or significant downtime."
     introTitle={(
       <>
-        What are <br /> 
+        What are <br />
         <span className="font-script text-[#D9A13B] text-6xl md:text-8xl inline-block leading-none">Fat Dissolving Injections?</span>
       </>
     )}
@@ -765,7 +997,7 @@ export const FatDissolving: React.FC = () => (
     enhancementsBgClass="bg-white"
     enhancementItemClass="border-stone-900 hover:bg-stone-50"
     useGoldIcons={false}
-    
+
     expectTitle="The"
     expectScript="Results"
     expectBody={`Changes appear gradually over the weeks following treatment as the body naturally clears the treated fat cells. The result is a smoother, more refined contour that looks natural and settles beautifully.
@@ -774,3 +1006,261 @@ export const FatDissolving: React.FC = () => (
     />
   </>
 );
+
+export const LaserTreatments: React.FC = () => {
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      q: "Is laser hair removal permanent?",
+      a: "Laser hair removal provides long-term hair reduction by targeting the hair follicle during its active growth phase. Most clients notice a significant reduction in hair growth after completing a course of treatments, with occasional maintenance sessions helping to maintain results."
+    },
+    {
+      q: "Is laser tattoo removal safe?",
+      a: "Yes. When performed by trained practitioners using medical-grade technology, laser tattoo removal is a safe and effective treatment. Every client undergoes a consultation and patch test before treatment begins."
+    },
+    {
+      q: "Does laser treatment hurt?",
+      a: "Most clients describe the sensation as a quick warm snap against the skin. Our advanced technology has been designed with client comfort in mind, making treatments significantly more comfortable than many older laser systems."
+    },
+    {
+      q: "Can all skin types be treated?",
+      a: "Yes. Our quad wavelength laser technology enables us to safely treat all skin types following a consultation and patch test."
+    }
+  ];
+
+  return (
+    <TreatmentLayout
+      title="Laser"
+    script="Treatments"
+    expectTitle="Begin Your"
+    expectScript="Laser Journey"
+    expectBody={`Whether you’re considering laser hair removal, tattoo removal or a Carbon Laser Facial, we’re here to help you achieve results you can feel confident in.
+
+Book your consultation and patch test today and discover why clients across Retford, Worksop, Bawtry, Doncaster, Gainsborough, Newark and the surrounding areas choose Apex Clinic & Academy for advanced laser treatments.
+
+We look forward to welcoming you to Apex Laser Clinic.`}
+    heroImage="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop"
+    heroDescription={`Advanced Laser Hair Removal, Tattoo Removal & Carbon Laser Facials in Retford
+
+Welcome to Apex Laser Clinic, the home of advanced laser treatments at Apex Clinic & Academy.`}
+    missionTitle="Our mission"
+    missionScript="is simple"
+    missionBody={`To provide safe, effective, results-driven laser treatments in a welcoming, luxury environment where every client feels confident and cared for. Whether you’re looking to reduce unwanted hair, remove an unwanted tattoo or improve the overall health of your skin, our experienced team will create a personalised treatment plan tailored to your goals.
+
+Using advanced quad wavelength laser technology, we’re able to safely treat all skin types whilst delivering powerful, effective results with comfort and precision. Every treatment begins with a thorough consultation and patch test, ensuring your treatment is suitable for your skin and designed specifically for you.`}
+    missionImage="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=2070&auto=format&fit=crop"
+    introTitle={(
+      <>
+        Why Choose <br />
+        <span className="font-script text-[#D9A13B] text-6xl md:text-8xl block mt-2 whitespace-nowrap">Apex Laser Clinic?</span>
+      </>
+    )}
+    introText={`Choosing the right laser treatment is about more than just the machine – it’s about the people behind it.
+
+At Apex Clinic & Academy, we combine advanced technology with highly trained practitioners and a nurse-led approach, giving you complete confidence that your safety, comfort and results always come first.`}
+    introImage="https://images.unsplash.com/photo-1522337360788-8b13edd793be?q=80&w=2070&auto=format&fit=crop"
+    introSectionReversed={true}
+    introImageAspect="aspect-square"
+    introSectionItemsClass="items-stretch"
+    introCtaText="Book Now"
+    introCtaLink="/contact"
+    benefitCardsTitle="When you choose Apex Laser Clinic,"
+    benefitCardsScript="you’ll benefit from"
+    benefitCards={[
+      { title: "Advanced quad wavelength laser technology", icon: <Zap size={40} /> },
+      { title: "Suitable for all skin types (Fitzpatrick I-VI)", icon: <Sparkles size={40} /> },
+      { title: "Personalised treatment plans", icon: <Smile size={40} /> },
+      { title: "Fully trained laser practitioners", icon: <ShieldCheck size={40} /> },
+      { title: "Nurse-led clinical support", icon: <Activity size={40} /> },
+      { title: "Comprehensive consultations and patch testing", icon: <Target size={40} /> },
+      { title: "Honest advice and realistic expectations", icon: <Scale size={40} /> },
+      { title: "Luxury clinic environment", icon: <Sparkles size={40} /> },
+      { title: "Ongoing support throughout your treatment journey", icon: <ArrowUpRight size={40} /> }
+    ]}
+    items={[
+      "Laser Hair Removal",
+      "Tattoo Removal",
+      "Carbon Laser Facials"
+    ]}
+    whyDifferentTitle="Why Our Laser"
+    whyDifferentScript="Is Different"
+    whyDifferentBody={`Not all laser machines are created equal.
+
+Many laser systems use only one or two wavelengths, meaning they can be limited when treating different skin tones, hair types or tattoo colours.
+
+Our advanced quad wavelength laser combines four wavelengths into one powerful platform, allowing us to treat a wider range of concerns safely and effectively. By targeting different depths within the skin, we can customise every treatment to suit your individual skin type and goals.
+
+This means we can:`}
+    whyDifferentBullets={[
+      "Safely treat all skin tones",
+      "Target both fine and coarse hair",
+      "Effectively treat stubborn areas",
+      "Treat a wider range of tattoo ink colours",
+      "Deliver truly personalised treatments"
+    ]}
+    whyDifferentFooter="We believe investing in the latest technology means investing in better results for our clients."
+    accordionSectionTitle={(
+      <>
+        Laser <br />
+        <span className="font-script text-[#D9A13B] text-6xl md:text-8xl block mt-2">Treatments</span>
+      </>
+    )}
+    accordionSectionBody="Our medical-grade laser treatments deliver targeted solutions for hair reduction, tattoo removal, and skin rejuvenation, combining advanced wavelength technology with professional expertise."
+    accordionBgClass="bg-[#eeeae7]"
+    accordionItems={[
+      {
+        title: "Laser Hair Removal",
+        body: `Enjoy smoother skin with long-term hair reduction and say goodbye to the endless cycle of shaving, waxing and ingrown hairs.
+
+Laser hair removal works by targeting the hair follicle with concentrated light energy, disrupting future hair growth while protecting the surrounding skin. Our advanced technology allows us to safely treat both men and women across almost every area of the body.
+
+Popular treatment areas include:
+• Face
+• Upper lip & chin
+• Underarms
+• Arms
+• Chest & abdomen
+• Back
+• Bikini & Hollywood
+• Legs
+• Feet & toes
+
+As hair grows in different cycles, a course of treatments is recommended to achieve the best possible long-term results. During your consultation, we’ll create a bespoke treatment plan based on your hair growth, skin type and desired outcome.`,
+        image: "https://images.unsplash.com/photo-1552693673-1bf958298935?q=80&w=2073&auto=format&fit=crop"
+      },
+      {
+        title: "Laser Tattoo Removal",
+        body: `Whether your tattoo no longer reflects who you are or you’re preparing for a cover-up, our advanced laser tattoo removal treatments offer a safe and effective solution.
+
+Using quad wavelength technology, we’re able to target a broad range of tattoo pigments, including colours that can often be more difficult to remove with traditional laser systems.
+
+Every tattoo is unique, so your treatment plan will depend on factors including its size, colours, age, depth and location. During your consultation we’ll assess your tattoo, explain the treatment process and provide realistic expectations for your journey.`,
+        image: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?q=80&w=2070&auto=format&fit=crop"
+      },
+      {
+        title: "Carbon Laser Facial",
+        body: `Often known as the Hollywood Facial, the Carbon Laser Facial is the perfect treatment for clients wanting brighter, clearer, healthier-looking skin with little to no downtime.
+
+Using a specialist medical-grade carbon lotion and advanced laser technology, this treatment deeply cleanses the pores, gently exfoliates the skin and stimulates collagen production to reveal a smoother, more radiant complexion.
+
+The Carbon Laser Facial is ideal for treating:
+• Oily or congested skin
+• Enlarged pores
+• Blackheads
+• Acne and acne-prone skin
+• Uneven skin texture
+• Fine lines
+• Dull, tired-looking skin
+
+Many clients notice an immediate improvement in their skin after just one treatment, making it the perfect choice before holidays, weddings and special occasions. For longer-lasting skin improvements, we may recommend a tailored course of treatments.`,
+        image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070&auto=format&fit=crop"
+      }
+    ]}
+    children={(
+      <>
+        <section className="bg-white overflow-hidden">
+        {/* Header - centered with elegant spacing */}
+        <div className="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16 md:pb-20 text-center">
+          <span className="text-xs uppercase tracking-[0.25em] text-[#D9A13B] font-semibold mb-3 block">Expert Team</span>
+          <h2 className="text-4xl md:text-6xl font-serif text-stone-900 leading-[0.95] mb-6">
+            Meet Your <span className="font-script text-6xl md:text-8xl block mt-3 text-[#D9A13B]">Laser Practitioners</span>
+          </h2>
+          <p className="text-stone-600 font-light text-lg leading-relaxed max-w-3xl mx-auto">
+            Our laser treatments are delivered by experienced practitioners who are passionate about helping every client feel confident in their skin.
+          </p>
+        </div>
+
+        {/* Checkerboard Split Grid */}
+        <div className="w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            {/* Kelly Row: Left Image, Right Dark Text Block */}
+            <div className="relative min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] h-full overflow-hidden group">
+              <img
+                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2000&auto=format&fit=crop"
+                alt="Kelly - Laser Practitioner"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="bg-[#eeeae7] p-8 sm:p-12 md:p-16 lg:p-20 xl:p-24 flex flex-col justify-center text-left">
+              <span className="text-xs uppercase tracking-[0.2em] text-[#D9A13B] font-semibold mb-3 block">Laser Practitioner</span>
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-stone-900 mb-6">Kelly</h3>
+              <p className="text-stone-600 font-light text-lg leading-relaxed">
+                Kelly is a fully qualified Laser Practitioner with a warm, friendly approach that immediately puts clients at ease. She is passionate about delivering safe, effective treatments and loves helping clients achieve long-term confidence through laser hair removal, tattoo removal and skin rejuvenation.
+              </p>
+            </div>
+
+            {/* Rochelle Row: Left Light Text Block, Right Image */}
+            {/* Rochelle Image Block - DOM order 3 (renders 3rd on mobile, after Kelly) */}
+            <div className="relative min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] h-full overflow-hidden group lg:order-2">
+              <img
+                src="https://images.unsplash.com/photo-1594824813573-246434de83fb?q=80&w=2000&auto=format&fit=crop"
+                alt="Rochelle - Laser Practitioner"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            {/* Rochelle Info Block - DOM order 4 (lg:order-1 shifts it to Column 1 on desktop) */}
+            <div className="bg-white p-8 sm:p-12 md:p-16 lg:p-20 xl:p-24 flex flex-col justify-center text-left lg:order-1">
+              <span className="text-xs uppercase tracking-[0.2em] text-[#D9A13B] font-semibold mb-3 block">Laser Practitioner</span>
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-stone-900 mb-6">Rochelle</h3>
+              <p className="text-stone-600 font-light text-lg leading-relaxed">
+                Rochelle is a fully qualified Laser Practitioner dedicated to providing personalised treatments with exceptional client care at the heart of everything she does. Her calm, reassuring nature helps clients feel comfortable throughout their treatment journey, from consultation through to their final results.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-[7.5rem] md:py-[10rem] bg-[#f4f0ed] relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16 md:mb-20">
+            <span className="text-xs uppercase tracking-[0.25em] text-stone-500 font-medium mb-3 block">Common Questions</span>
+            <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-tight">
+              Frequently Asked <span className="font-script text-6xl md:text-8xl block mt-2 text-[#D9A13B] normal-case tracking-normal">Questions</span>
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = activeFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl border border-stone-200/40 shadow-[0_4px_20px_-4px_rgba(139,115,85,0.03)] transition-all duration-300 overflow-hidden"
+                >
+                  <button
+                    onClick={() => setActiveFaq(isOpen ? null : idx)}
+                    className="w-full px-8 py-6 md:px-10 md:py-8 group flex justify-between items-center text-left focus:outline-none"
+                  >
+                    <span className="text-lg md:text-xl font-serif text-stone-900 transition-colors group-hover:text-stone-600 leading-snug pr-4">
+                      {faq.q}
+                    </span>
+                    <div className="text-[#D9A13B] ml-4 shrink-0 transition-transform duration-300">
+                      {isOpen ? <Minus size={20} strokeWidth={1.5} /> : <Plus size={20} strokeWidth={1.5} />}
+                    </div>
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                      isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+                    }`}
+                  >
+                    <div className="px-8 pb-8 md:px-10 md:pb-10 border-t border-stone-100 pt-6">
+                      <p className="text-stone-600 font-light text-lg leading-relaxed">
+                        {faq.a}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+  />
+);
+};

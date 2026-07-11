@@ -1053,7 +1053,7 @@ Using advanced quad wavelength laser technology, we’re able to safely treat al
     introTitle={(
       <>
         Why Choose <br />
-        <span className="font-script text-[#D9A13B] text-6xl md:text-8xl block mt-2 whitespace-nowrap">Apex Laser Clinic?</span>
+        <span className="font-script text-[#D9A13B] text-6xl md:text-8xl block mt-2 whitespace-nowrap">Apex Laser</span>
       </>
     )}
     introText={`Choosing the right laser treatment is about more than just the machine – it’s about the people behind it.
@@ -1127,8 +1127,7 @@ Popular treatment areas include:
 • Legs
 • Feet & toes
 
-As hair grows in different cycles, a course of treatments is recommended to achieve the best possible long-term results. During your consultation, we’ll create a bespoke treatment plan based on your hair growth, skin type and desired outcome.`,
-        image: "https://images.unsplash.com/photo-1552693673-1bf958298935?q=80&w=2073&auto=format&fit=crop"
+As hair grows in different cycles, a course of treatments is recommended to achieve the best possible long-term results. During your consultation, we’ll create a bespoke treatment plan based on your hair growth, skin type and desired outcome.`
       },
       {
         title: "Laser Tattoo Removal",
@@ -1136,8 +1135,7 @@ As hair grows in different cycles, a course of treatments is recommended to achi
 
 Using quad wavelength technology, we’re able to target a broad range of tattoo pigments, including colours that can often be more difficult to remove with traditional laser systems.
 
-Every tattoo is unique, so your treatment plan will depend on factors including its size, colours, age, depth and location. During your consultation we’ll assess your tattoo, explain the treatment process and provide realistic expectations for your journey.`,
-        image: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?q=80&w=2070&auto=format&fit=crop"
+Every tattoo is unique, so your treatment plan will depend on factors including its size, colours, age, depth and location. During your consultation we’ll assess your tattoo, explain the treatment process and provide realistic expectations for your journey.`
       },
       {
         title: "Carbon Laser Facial",
@@ -1154,8 +1152,7 @@ The Carbon Laser Facial is ideal for treating:
 • Fine lines
 • Dull, tired-looking skin
 
-Many clients notice an immediate improvement in their skin after just one treatment, making it the perfect choice before holidays, weddings and special occasions. For longer-lasting skin improvements, we may recommend a tailored course of treatments.`,
-        image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070&auto=format&fit=crop"
+Many clients notice an immediate improvement in their skin after just one treatment, making it the perfect choice before holidays, weddings and special occasions. For longer-lasting skin improvements, we may recommend a tailored course of treatments.`
       }
     ]}
     children={(

@@ -1049,7 +1049,7 @@ Welcome to Apex Laser Clinic, the home of advanced laser treatments at Apex Clin
     missionBody={`To provide safe, effective, results-driven laser treatments in a welcoming, luxury environment where every client feels confident and cared for. Whether you’re looking to reduce unwanted hair, remove an unwanted tattoo or improve the overall health of your skin, our experienced team will create a personalised treatment plan tailored to your goals.
 
 Using advanced quad wavelength laser technology, we’re able to safely treat all skin types whilst delivering powerful, effective results with comfort and precision. Every treatment begins with a thorough consultation and patch test, ensuring your treatment is suitable for your skin and designed specifically for you.`}
-    missionImage="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=2070&auto=format&fit=crop"
+    missionImage="/laser/laser-our-mission-is-simple.png"
     introTitle={(
       <>
         Why Choose <br />
@@ -1059,12 +1059,13 @@ Using advanced quad wavelength laser technology, we’re able to safely treat al
     introText={`Choosing the right laser treatment is about more than just the machine – it’s about the people behind it.
 
 At Apex Clinic & Academy, we combine advanced technology with highly trained practitioners and a nurse-led approach, giving you complete confidence that your safety, comfort and results always come first.`}
-    introImage="https://images.unsplash.com/photo-1522337360788-8b13edd793be?q=80&w=2070&auto=format&fit=crop"
+    introImage="/laser/why-choose-apex-laser.png"
     introSectionReversed={true}
     introImageAspect="aspect-square"
     introSectionItemsClass="items-stretch"
     introCtaText="Book Now"
     introCtaLink="/contact"
+    expectImage="/laser/begin-your-laser-journey.jpg"
     benefitCardsTitle="When you choose Apex Laser Clinic,"
     benefitCardsScript="you’ll benefit from"
     benefitCards={[
@@ -1177,7 +1178,7 @@ Many clients notice an immediate improvement in their skin after just one treatm
             {/* Kelly Row: Left Image, Right Dark Text Block */}
             <div className="relative min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] h-full overflow-hidden group">
               <img
-                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2000&auto=format&fit=crop"
+                src="/laser/practitioner-kelly.jpg"
                 alt="Kelly - Laser Practitioner"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"
@@ -1195,7 +1196,7 @@ Many clients notice an immediate improvement in their skin after just one treatm
             {/* Rochelle Image Block - DOM order 3 (renders 3rd on mobile, after Kelly) */}
             <div className="relative min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] h-full overflow-hidden group lg:order-2">
               <img
-                src="https://images.unsplash.com/photo-1594824813573-246434de83fb?q=80&w=2000&auto=format&fit=crop"
+                src="/laser/practitioner-rochelle.jpg"
                 alt="Rochelle - Laser Practitioner"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"

@@ -1040,7 +1040,7 @@ export const LaserTreatments: React.FC = () => {
 Book your consultation and patch test today and discover why clients across Retford, Worksop, Bawtry, Doncaster, Gainsborough, Newark and the surrounding areas choose Apex Clinic & Academy for advanced laser treatments.
 
 We look forward to welcoming you to Apex Laser Clinic.`}
-    heroImage="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop"
+    heroImage="/laser/hero.webp"
     heroDescription={`Advanced Laser Hair Removal, Tattoo Removal & Carbon Laser Facials in Retford
 
 Welcome to Apex Laser Clinic, the home of advanced laser treatments at Apex Clinic & Academy.`}

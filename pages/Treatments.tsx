@@ -685,7 +685,7 @@ The focus is always on subtle, well-balanced results - so you leave feeling refr
             {/* Left/Right depending on expectSectionReversed */}
             <div className={`order-1 ${expectSectionReversed ? 'lg:order-2' : 'lg:order-1'} text-left flex flex-col justify-center py-4`}>
               <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-tight mb-10">
-                {expectTitle} <span className={`${scriptTitleClass} ml-4`}>{expectScript}</span>
+                {expectTitle} <span className={`${scriptTitleClass} ml-4 whitespace-nowrap`}>{expectScript}</span>
               </h2>
               <div className="space-y-6 text-stone-600 font-light text-lg leading-relaxed mb-12">
                 {displayExpectBody.split('\n').map((para, i) => (

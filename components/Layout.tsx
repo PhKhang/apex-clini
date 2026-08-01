@@ -309,13 +309,13 @@ export const Footer: React.FC = () => {
                 Phone / WhatsApp
               </h3>
               <a 
-                href="https://api.whatsapp.com/send?phone=%2B447710537924" 
+                href="https://api.whatsapp.com/send?phone=%2B447364146708" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-stone-600 font-light text-lg hover:text-stone-900 transition-colors inline-flex items-center gap-2"
               >
                 <MessageCircle size={18} />
-                07710537924
+                07364146708
               </a>
             </div>
           </div>

@@ -61,7 +61,7 @@ export const Navbar: React.FC = () => {
           <Link to="/" className="z-50 flex flex-col items-start group">
             {showLogo ? (
               <img
-                src="/images/logo.png"
+                src="/images/logo.jpg"
                 alt="Apex Clinic Logo"
                 className="h-[3rem] w-auto"
               />

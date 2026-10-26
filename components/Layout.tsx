@@ -63,7 +63,7 @@ export const Navbar: React.FC = () => {
               <img
                 src="/images/logo.jpg"
                 alt="Apex Clinic Logo"
-                className="h-[3rem] w-auto"
+                className="h-[5rem] w-auto"
               />
             ) : (
               <>
